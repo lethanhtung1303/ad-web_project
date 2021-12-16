@@ -14,6 +14,7 @@ var addDeptRouter = require('./routes/addDept');
 var profileRouter = require('./routes/profile');
 var changeAvtRouter = require('./routes/changeAvt');
 var changePassRouter = require('./routes/changePass');
+var notifyDetailRouter = require('./routes/notifyDetail');
 
 var app = express();
 
@@ -37,6 +38,7 @@ app.use('/addDept', addDeptRouter);
 app.use('/profile', profileRouter);
 app.use('/changeAvt', changeAvtRouter);
 app.use('/changePass', changePassRouter);
+app.use('/notifyDetail', notifyDetailRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

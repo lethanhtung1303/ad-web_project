@@ -1,3 +1,8 @@
+:root {
+    /*===== Colors =====*/
+    --first-color: #eaeaef;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,8 +17,11 @@
     padding: 30px 20px;
 }
 
+/* css hạn chế để mấy cái như này
+đặt tên class rồi css trên class thôi */
+
 nav ul {
-    background: #1b1b1b;
+    /* background: #1b1b1b; */
     list-style: none;
 }
 
@@ -173,7 +181,7 @@ nav ul li a span.rotate {
 }
 
 .homepage__upload-text::after {
-    content: "";
+    content: '';
     width: 100%;
     border-top: 1px rgb(105, 78, 78) solid;
     height: 1px;
@@ -206,7 +214,9 @@ nav ul li a span.rotate {
     margin-top: 25px;
 }
 
-.homepage__upload-extra--live_video, .homepage__upload-extra--photovideo, .homepage__upload-extra--feelingactivity{
+.homepage__upload-extra--live_video,
+.homepage__upload-extra--photovideo,
+.homepage__upload-extra--feelingactivity {
     flex: 1;
     text-align: center;
 }
@@ -222,7 +232,7 @@ nav ul li a span.rotate {
 
 .homepage__post-posts {
     border-radius: 12px;
-    background-color:#eaeaef;
+    background-color: #eaeaef;
     margin: 12px 0;
     padding-bottom: 18px;
 }
@@ -237,7 +247,7 @@ nav ul li a span.rotate {
 }
 
 .homepage__post-posts--header-name {
-    font-weight: 600    ;
+    font-weight: 600;
 }
 
 .homepage__post-posts--header-option-3dot {
@@ -260,7 +270,7 @@ nav ul li a span.rotate {
     position: relative;
 }
 
-.homepage__post-posts--stat  {
+.homepage__post-posts--stat {
     margin: 12px 0;
 }
 
@@ -268,7 +278,8 @@ nav ul li a span.rotate {
     height: 22px;
 }
 
-.homepage__post-posts--stat, .homepage__post-posts--react {
+.homepage__post-posts--stat,
+.homepage__post-posts--react {
     margin: 0 12px;
 }
 
@@ -300,13 +311,14 @@ nav ul li a span.rotate {
     text-align: center;
 }
 
-.homepage__post-posts--stat::after, .homepage__post-posts--react::after {
-    content: "";
+.homepage__post-posts--stat::after,
+.homepage__post-posts--react::after {
+    content: '';
     width: 100%;
     border-top: 1px rgb(12, 9, 9) solid;
     height: 1px;
     position: absolute;
-    bottom: -15px;  
+    bottom: -15px;
 }
 
 .homepage__post-posts--content--cmt {
@@ -365,5 +377,44 @@ nav ul li a span.rotate {
 
 .homepage__post-posts--content--yourcmticon {
     position: absolute;
-    right: 70px
+    right: 70px;
+}
+
+/* myNotify */
+
+.myNotify {
+    width: 94%;
+    margin: 25px auto 0;
+}
+
+.myNotify__content {
+    border-radius: 12px;
+    background-color: var(--first-color);
+    margin: 12px 0;
+    padding-bottom: 18px;
+}
+
+.myNotify__content__header {
+    display: flex;
+    padding: 18px 12px 10px 12px;
+}
+
+.myNotify__content__header__content {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.myNotify__title {
+    font-weight: 600;
+}
+
+.myNotify__detail {
+    display: flex;
+    position: relative;
+    margin: 12px 0;
+    margin: 0 12px;
+}
+
+.myNotify__btn__dropdown {
+    background-color: var(--first-color);
 }
