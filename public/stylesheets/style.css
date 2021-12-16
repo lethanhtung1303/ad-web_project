@@ -24,7 +24,7 @@ nav ul {
 
 .col-md-5 {
     /* background-color: rgba(222, 222, 222, 255); */
-    text-align: center;
+    /* text-align: center; */
     width: 55%;
     float: left;
     padding: 20px;
@@ -157,4 +157,213 @@ nav ul li a span.rotate {
     .col-md-5 {
         width: 100%;
     }
+}
+
+.homepage__upload {
+    width: 94%;
+    margin: auto;
+    background-color: #eaeaef;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.homepage__upload-text {
+    display: flex;
+    position: relative;
+}
+
+.homepage__upload-text::after {
+    content: "";
+    width: 100%;
+    border-top: 1px rgb(105, 78, 78) solid;
+    height: 1px;
+    position: absolute;
+    bottom: -15px;
+}
+
+.homepage__upload-text--avt {
+    width: 35px;
+    height: 35px;
+}
+
+.homepage__upload-text--avt--input {
+    border: none;
+    flex: 1;
+    margin: 0 12px 0 12px;
+    border-radius: 12px;
+    background-color: #2596be;
+    color: white;
+    text-indent: 8px;
+}
+
+.homepage__upload-text--avt--input::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+.homepage__upload-extra {
+    display: flex;
+    margin-top: 25px;
+}
+
+.homepage__upload-extra--live_video, .homepage__upload-extra--photovideo, .homepage__upload-extra--feelingactivity{
+    flex: 1;
+    text-align: center;
+}
+
+.homepage__upload-extra--live_video--img {
+    height: 22px;
+}
+
+.homepage__post {
+    width: 94%;
+    margin: 25px auto 0;
+}
+
+.homepage__post-posts {
+    border-radius: 12px;
+    background-color:#eaeaef;
+    margin: 12px 0;
+    padding-bottom: 18px;
+}
+
+.homepage__post-posts--header {
+    display: flex;
+    padding: 18px 12px 10px 12px;
+}
+.homepage__post-posts--header-nametime {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.homepage__post-posts--header-name {
+    font-weight: 600    ;
+}
+
+.homepage__post-posts--header-option-3dot {
+    width: 15px;
+}
+
+.homepage__post-posts--content {
+    padding: 80px 18px;
+    margin: 12px 0;
+    background-color: aquamarine;
+    text-align: center;
+    /* border-radius: 12px; */
+    font-size: 36px;
+    font-weight: 400;
+    overflow-wrap: break-word;
+}
+
+.homepage__post-posts--stat {
+    display: flex;
+    position: relative;
+}
+
+.homepage__post-posts--stat  {
+    margin: 12px 0;
+}
+
+.homepage__post-posts--stat--like-icon {
+    height: 22px;
+}
+
+.homepage__post-posts--stat, .homepage__post-posts--react {
+    margin: 0 12px;
+}
+
+.homepage__post-posts--stat--like {
+    flex: 1;
+}
+
+.homepage__post-posts--react {
+    margin-top: 30px;
+    display: flex;
+    position: relative;
+}
+
+.homepage__post-posts--react--like-icon {
+    height: 30px;
+}
+
+.homepage__post-posts--react {
+    display: flex;
+}
+
+.homepage__post-posts--react--like {
+    flex: 1;
+    text-align: center;
+}
+
+.homepage__post-posts--react--cmt {
+    flex: 1;
+    text-align: center;
+}
+
+.homepage__post-posts--stat::after, .homepage__post-posts--react::after {
+    content: "";
+    width: 100%;
+    border-top: 1px rgb(12, 9, 9) solid;
+    height: 1px;
+    position: absolute;
+    bottom: -15px;  
+}
+
+.homepage__post-posts--content--cmt {
+    margin: 25px 12px;
+}
+
+.homepage__post-posts--content--cmt-avt {
+    width: 28px;
+    height: 28px;
+}
+
+.homepage__post-posts--content--1cmt {
+    display: flex;
+    margin: 12px 0;
+}
+
+.homepage__post-posts--content--1cmt-name {
+    font-weight: 500;
+}
+
+.homepage__post-posts--content--1cmt-namecontent {
+    margin-left: 12px;
+    max-width: 80%;
+    overflow-wrap: break-word;
+    background-color: aliceblue;
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.homepage__upload-extra--live_video--img2 {
+    margin-left: 8px;
+}
+
+.homepage__post-posts--content--1cmt-name {
+    display: flex;
+}
+
+.homepage__post-posts--content--1cmt-ifauthor {
+    color: blue;
+    font-size: 0.6rem;
+    margin: 6px 0 0 6px;
+}
+
+.homepage__post-posts--content--yourcmt {
+    display: flex;
+    margin: 0 12px;
+}
+
+.homepage__post-posts--content--yourcmtinput {
+    flex: 1;
+    margin: 0 16px;
+    border-radius: 12px;
+    border: none;
+    background-color: rgb(221, 212, 212);
+}
+
+.homepage__post-posts--content--yourcmticon {
+    position: absolute;
+    right: 70px
 }
