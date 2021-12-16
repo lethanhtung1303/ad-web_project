@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Student Portal</title>
+
+        <!-- stylesheets -->
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+
+        <!-- font-awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        />
+
+        <!-- bootstrap -->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"
+        />
+
+        <!-- normalize -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+            integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+    <body>
+        <header class="header">
+            <h1>HỆ THỐNG THÔNG TIN SINH VIÊN | STUDENT PORTAL</h1>
+        </header>
+
+        <nav class="col-md-3" class="sidebar">
+            <ul>
+                <li class="active">
+                    <a href="/"
+                        ><i class="fa fa-home" aria-hidden="true"></i> Trang
+                        chủ</a
+                    >
+                </li>
+                <li class="active">
+                    <a href="/myPost"
+                        ><i class="fa fa-indent" aria-hidden="true"></i> Bài
+                        viết của tôi</a
+                    >
+                </li>
+                <li class="active">
+                    <a href="/myNotify"
+                        ><i class="fa fa-list-alt" aria-hidden="true"></i> Thông
+                        báo của tôi</a
+                    >
+                </li>
+
+                <li class="active">
+                    <a href="#" class="feat-btn"
+                        ><i class="fa fa-bullhorn" aria-hidden="true"></i> Thông
+                        báo
+                        <span class="fas fa-caret-down first"></span>
+                    </a>
+                    <ul class="feat-show">
+                        <li><a href="/notifyList">Danh sách thông báo</a></li>
+                        <li>
+                            <a href="/notifyTopic">Thông báo theo chuyên đề</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#" class="serv-btn"
+                        ><i class="fa fa-list" aria-hidden="true"></i> Phòng ban
+                        <span class="fas fa-caret-down second"></span>
+                    </a>
+                    <ul class="serv-show">
+                        <li><a href="/deptList">Danh sách phòng ban</a></li>
+                        <li><a href="/addDept">Thêm phòng ban</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="#" class="user-btn"
+                        ><i class="fa fa-user" aria-hidden="true"></i> Thông tin
+                        cá nhân
+                        <span class="fas fa-caret-down third"></span>
+                    </a>
+                    <ul class="user-show">
+                        <li><a href="/profile">Xem hồ sơ</a></li>
+                        <li><a href="/changeAvt">Đổi hình đại diện</a></li>
+                        <li><a href="/changePass">Đổi mật khẩu</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="col-md-5"><%- include(locals.content) %></div>
+
+        <div class="col-md-4">
+            <div class="aside">
+                <h2>Thông báo</h2>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- jquery -->
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+        <!-- javascripts -->
+        <script src="/javascripts/main.js"></script>
+    </body>
+</html>
