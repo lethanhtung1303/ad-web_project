@@ -12,3 +12,7 @@
 -   Ho&Ten: Trần Bình Trọng; MSSV: 51800253
 
 ## How to configure & run
+
+-   Bước 1: npm i
+-   Bước 2: npm run start
+-   http://localhost:3000/
