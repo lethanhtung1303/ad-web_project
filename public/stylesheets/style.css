@@ -221,13 +221,14 @@ nav ul li a span.rotate {
   flex: 1;
   margin: 0 12px 0 12px;
   border-radius: 12px;
-  background-color: #2596be;
-  color: white;
+  background-color: white;
+  color: black;
   text-indent: 8px;
+  border: 1px rgb(126, 123, 123) solid;
 }
 
 .homepage__upload-text--avt--input::placeholder {
-  color: white;
+  color: black;
   opacity: 1; /* Firefox */
 }
 
@@ -241,6 +242,14 @@ nav ul li a span.rotate {
 .homepage__upload-extra--feelingactivity {
   flex: 1;
   text-align: center;
+}
+
+.homepage__upload-extra--live_videobtn {
+  border: none;
+}
+
+.homepage__upload-extra--live_videobtn div {
+  padding: 3px;
 }
 
 .homepage__upload-extra--live_video--img {
@@ -266,6 +275,14 @@ nav ul li a span.rotate {
 .homepage__post-posts--header-nametime {
   flex: 1;
   margin-left: 15px;
+}
+
+a.homepage__post-posts--header-name, a.homepage__post-posts--content--1cmt-namen {
+  color: black;
+}
+
+a.homepage__post-posts--header-name:hover, a.homepage__post-posts--content--1cmt-namen:hover {
+  color: black;
 }
 
 .homepage__post-posts--header-name {
@@ -394,12 +411,25 @@ nav ul li a span.rotate {
   margin: 0 16px;
   border-radius: 12px;
   border: none;
-  background-color: rgb(221, 212, 212);
+  background-color: white;
+  color: black;
+  text-indent: 8px;
+  border: 1px rgb(126, 123, 123) solid;
+}
+
+.homepage__post-posts--content--yourcmtinput::placeholder {
+  color: black;
+  opacity: 1; /* Firefox */
 }
 
 .homepage__post-posts--content--yourcmticon {
   position: absolute;
   right: 70px;
+}
+
+.homepage__post-posts--content--yourcmticon button {
+  border: none;
+  background-color: white;
 }
 
 /* myNotify */
@@ -472,4 +502,8 @@ nav ul li a span.rotate {
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.mypostpage:first-child {
+  margin-top: -12px;
 }

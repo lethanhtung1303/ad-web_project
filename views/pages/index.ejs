@@ -15,23 +15,33 @@
     </div>
     <div class="homepage__upload-extra">
         <div class="homepage__upload-extra--live_video">
-            <img
-                src="/images/live.png"
-                class="homepage__upload-extra--live_video--img"
-            />
-            Video
+            <Button class="homepage__upload-extra--live_videobtn">
+                <div><img
+                    src="/images/live.png"
+                    class="homepage__upload-extra--live_video--img"
+                    />
+                    Video</div>
+            </Button>
         </div>
         <div class="homepage__upload-extra--photovideo">
-            <img
-                src="/images/photo.png"
-                class="homepage__upload-extra--live_video--img"
-            />Photo/Video
+            
+            <Button class="homepage__upload-extra--live_videobtn">
+                <div><img
+                    src="/images/photo.png"
+                    class="homepage__upload-extra--live_video--img"
+                />Photo/Video
+            </Button>
         </div>
         <div class="homepage__upload-extra--feelingactivity">
-            <img
-                src="/images/icon.png"
-                class="homepage__upload-extra--live_video--img"
-            />Feeling/Activity
+            <Button class="homepage__upload-extra--live_videobtn">
+                <div>
+                    <img
+                        src="/images/icon.png"
+                        class="homepage__upload-extra--live_video--img"
+                    />
+                    Feeling/Activity
+            </Button>
+            
         </div>
     </div>
 </div>
@@ -47,50 +57,28 @@
                 />
             </div>
             <div class="homepage__post-posts--header-nametime">
-                <div class="homepage__post-posts--header-name">Thiện Vsoul</div>
+                <a class="homepage__post-posts--header-name" href="#">Thiện Vsoul</a>
                 <div class="homepage__post-posts--header-time">
                     December 14, 2021
                 </div>
             </div>
-            <div class="homepage__post-posts--header-option">
-                <img
-                    src="/images/3dot.png"
-                    alt=""
-                    class="homepage__post-posts--header-option-3dot"
-                />
+            <button
+                class="btn myNotify__btn__dropdown"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+            >
+                <i class="fas fa-ellipsis-v"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Xóa bài viết</a>
+                <a class="dropdown-item" href="#">Chỉnh sửa bài viết</a>
             </div>
         </div>
         <div class="homepage__post-posts--content">
             helooooooooooooooooasdddddddddddddddddddddccccccccccccssssssssssssssssssssssssssssccccccccccccccccccccccccccs
-        </div>
-        <div class="homepage__post-posts--stat">
-            <div class="homepage__post-posts--stat--like">
-                <img
-                    src="/images/like.png"
-                    alt=""
-                    class="homepage__post-posts--stat--like-icon"
-                />
-                9
-            </div>
-            <div class="homepage__post-posts--stat--cmt">11 comments</div>
-        </div>
-        <div class="homepage__post-posts--react">
-            <div class="homepage__post-posts--react--like">
-                <img
-                    src="/images/likebnw.png"
-                    alt=""
-                    class="homepage__post-posts--react--like-icon"
-                />
-                Like
-            </div>
-            <div class="homepage__post-posts--react--cmt">
-                <img
-                    src="/images/cmtbnw.png"
-                    alt=""
-                    class="homepage__post-posts--react--like-icon"
-                />
-                Comments
-            </div>
         </div>
         <div class="homepage__post-posts--content--cmt">
             <p>View 6 more comments</p>
@@ -108,7 +96,7 @@
                 </div>
                 <div class="homepage__post-posts--content--1cmt-namecontent">
                     <div class="homepage__post-posts--content--1cmt-name">
-                        Thiện Vsoul
+                        <a class="homepage__post-posts--content--1cmt-namen" href="#">Thiện Vsoul</a>
                         <div
                             class="homepage__post-posts--content--1cmt-ifauthor"
                         >
@@ -118,16 +106,6 @@
                     <div class="homepage__post-posts--content--1cmt-content">
                         xin chaao cac ban
                     </div>
-                </div>
-                <div class="homepage__post-posts--content--1cmt-3dot">
-                    <img
-                        src="/images/3dot.png"
-                        alt=""
-                        class="
-                            homepage__post-posts--header-option-3dot
-                            homepage__upload-extra--live_video--img2
-                        "
-                    />
                 </div>
             </div>
 
@@ -144,7 +122,7 @@
                 </div>
                 <div class="homepage__post-posts--content--1cmt-namecontent">
                     <div class="homepage__post-posts--content--1cmt-name">
-                        Thiện Vsoul
+                        <a class="homepage__post-posts--content--1cmt-namen" href="#">Thiện Vsoul</a>
                         <div
                             class="homepage__post-posts--content--1cmt-ifauthor"
                         >
@@ -154,16 +132,6 @@
                     <div class="homepage__post-posts--content--1cmt-content">
                         xin chaao cac ban
                     </div>
-                </div>
-                <div class="homepage__post-posts--content--1cmt-3dot">
-                    <img
-                        src="/images/3dot.png"
-                        alt=""
-                        class="
-                            homepage__post-posts--header-option-3dot
-                            homepage__upload-extra--live_video--img2
-                        "
-                    />
                 </div>
             </div>
 
@@ -180,7 +148,7 @@
                 </div>
                 <div class="homepage__post-posts--content--1cmt-namecontent">
                     <div class="homepage__post-posts--content--1cmt-name">
-                        Thiện Vsoul
+                        <a class="homepage__post-posts--content--1cmt-namen" href="#">Thiện Vsoul</a>
                         <div
                             class="homepage__post-posts--content--1cmt-ifauthor"
                         >
@@ -192,16 +160,6 @@
                         cssssssssssssssssssssssssssshascssssssssssssssssssssssssssshascssssssssssssssssssssssssssshascssssssssssssssssssssssssssshascssssssssssssssssssssssssssshascssssssssssssssssssssssssssshasdsdasdasdasdsdasdasdasdsdsdaao
                         cac ban
                     </div>
-                </div>
-                <div class="homepage__post-posts--content--1cmt-3dot">
-                    <img
-                        src="/images/3dot.png"
-                        alt=""
-                        class="
-                            homepage__post-posts--header-option-3dot
-                            homepage__upload-extra--live_video--img2
-                        "
-                    />
                 </div>
             </div>
         </div>
@@ -221,417 +179,23 @@
                 class="homepage__post-posts--content--yourcmtinput"
             />
             <div class="homepage__post-posts--content--yourcmticon">
-                <img
+                <button class="homepage__post-posts--content--yourcmticon1"><img
                     src="/images/icon.png"
                     class="homepage__upload-extra--live_video--img"
-                /><img
+                /></button>
+                <button class="homepage__post-posts--content--yourcmticon2"><img
                     src="/images/img.png"
                     class="homepage__upload-extra--live_video--img"
-                /><img
+                /></button>
+                <button class="homepage__post-posts--content--yourcmticon3"><img
                     src="/images/send.png"
                     class="homepage__upload-extra--live_video--img"
-                />
+                /></button>
             </div>
         </div>
     </div>
 </div>
 
-<div class="homepage__post">
-    <div class="homepage__post-posts">
-        <div class="homepage__post-posts--header">
-            <div class="homepage__post-posts--header-avt">
-                <img
-                    src="/images/avt.png"
-                    alt=""
-                    class="rounded-circle homepage__upload-text--avt"
-                />
-            </div>
-            <div class="homepage__post-posts--header-nametime">
-                <div class="homepage__post-posts--header-name">Thiện Vsoul</div>
-                <div class="homepage__post-posts--header-time">
-                    December 14, 2021
-                </div>
-            </div>
-            <div class="homepage__post-posts--header-option">
-                <img
-                    src="/images/3dot.png"
-                    alt=""
-                    class="homepage__post-posts--header-option-3dot"
-                />
-            </div>
-        </div>
-        <div class="homepage__post-posts--content">
-            helooooooooooooooooasdddddddddddddddddddddccccccccccccssssssssssssssssssssssssssssccccccccccccccccccccccccccs
-        </div>
-        <div class="homepage__post-posts--stat">
-            <div class="homepage__post-posts--stat--like">
-                <img
-                    src="/images/like.png"
-                    alt=""
-                    class="homepage__post-posts--stat--like-icon"
-                />
-                9
-            </div>
-            <div class="homepage__post-posts--stat--cmt">11 comments</div>
-        </div>
-        <div class="homepage__post-posts--react">
-            <div class="homepage__post-posts--react--like">
-                <img
-                    src="/images/likebnw.png"
-                    alt=""
-                    class="homepage__post-posts--react--like-icon"
-                />
-                Like
-            </div>
-            <div class="homepage__post-posts--react--cmt">
-                <img
-                    src="/images/cmtbnw.png"
-                    alt=""
-                    class="homepage__post-posts--react--like-icon"
-                />
-                Comments
-            </div>
-        </div>
-        <div class="homepage__post-posts--content--cmt">
-            <p>View 6 more comments</p>
 
-            <div class="homepage__post-posts--content--1cmt">
-                <div class="homepage__post-posts--content--1cmt-avt">
-                    <img
-                        src="/images/avt.png"
-                        alt=""
-                        class="
-                            rounded-circle
-                            homepage__post-posts--content--cmt-avt
-                        "
-                    />
-                </div>
-                <div class="homepage__post-posts--content--1cmt-namecontent">
-                    <div class="homepage__post-posts--content--1cmt-name">
-                        Thiện Vsoul
-                        <div
-                            class="homepage__post-posts--content--1cmt-ifauthor"
-                        >
-                            Author
-                        </div>
-                    </div>
-                    <div class="homepage__post-posts--content--1cmt-content">
-                        xin chaao cac ban
-                    </div>
-                </div>
-                <div class="homepage__post-posts--content--1cmt-3dot">
-                    <img
-                        src="/images/3dot.png"
-                        alt=""
-                        class="
-                            homepage__post-posts--header-option-3dot
-                            homepage__upload-extra--live_video--img2
-                        "
-                    />
-                </div>
-            </div>
 
-            <div class="homepage__post-posts--content--1cmt">
-                <div class="homepage__post-posts--content--1cmt-avt">
-                    <img
-                        src="/images/avt.png"
-                        alt=""
-                        class="
-                            rounded-circle
-                            homepage__post-posts--content--cmt-avt
-                        "
-                    />
-                </div>
-                <div class="homepage__post-posts--content--1cmt-namecontent">
-                    <div class="homepage__post-posts--content--1cmt-name">
-                        Thiện Vsoul
-                        <div
-                            class="homepage__post-posts--content--1cmt-ifauthor"
-                        >
-                            Author
-                        </div>
-                    </div>
-                    <div class="homepage__post-posts--content--1cmt-content">
-                        xin chaao cac ban
-                    </div>
-                </div>
-                <div class="homepage__post-posts--content--1cmt-3dot">
-                    <img
-                        src="/images/3dot.png"
-                        alt=""
-                        class="
-                            homepage__post-posts--header-option-3dot
-                            homepage__upload-extra--live_video--img2
-                        "
-                    />
-                </div>
-            </div>
 
-            <div class="homepage__post-posts--content--1cmt">
-                <div class="homepage__post-posts--content--1cmt-avt">
-                    <img
-                        src="/images/avt.png"
-                        alt=""
-                        class="
-                            rounded-circle
-                            homepage__post-posts--content--cmt-avt
-                        "
-                    />
-                </div>
-                <div class="homepage__post-posts--content--1cmt-namecontent">
-                    <div class="homepage__post-posts--content--1cmt-name">
-                        Thiện Vsoul
-                        <div
-                            class="homepage__post-posts--content--1cmt-ifauthor"
-                        >
-                            Author
-                        </div>
-                    </div>
-                    <div class="homepage__post-posts--content--1cmt-content">
-                        xin
-                        cssssssssssssssssssssssssssshascssssssssssssssssssssssssssshascssssssssssssssssssssssssssshascssssssssssssssssssssssssssshascssssssssssssssssssssssssssshascssssssssssssssssssssssssssshasdsdasdasdasdsdasdasdasdsdsdaao
-                        cac ban
-                    </div>
-                </div>
-                <div class="homepage__post-posts--content--1cmt-3dot">
-                    <img
-                        src="/images/3dot.png"
-                        alt=""
-                        class="
-                            homepage__post-posts--header-option-3dot
-                            homepage__upload-extra--live_video--img2
-                        "
-                    />
-                </div>
-            </div>
-        </div>
-        <div class="homepage__post-posts--content--yourcmt">
-            <div class="homepage__post-posts--content--1cmt-avt">
-                <img
-                    src="/images/avt.png"
-                    alt=""
-                    class="
-                        rounded-circle
-                        homepage__post-posts--content--cmt-avt
-                    "
-                />
-            </div>
-            <input
-                type="text"
-                class="homepage__post-posts--content--yourcmtinput"
-            />
-            <div class="homepage__post-posts--content--yourcmticon">
-                <img
-                    src="/images/icon.png"
-                    class="homepage__upload-extra--live_video--img"
-                /><img
-                    src="/images/img.png"
-                    class="homepage__upload-extra--live_video--img"
-                /><img
-                    src="/images/send.png"
-                    class="homepage__upload-extra--live_video--img"
-                />
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="homepage__post">
-    <div class="homepage__post-posts">
-        <div class="homepage__post-posts--header">
-            <div class="homepage__post-posts--header-avt">
-                <img
-                    src="/images/avt.png"
-                    alt=""
-                    class="rounded-circle homepage__upload-text--avt"
-                />
-            </div>
-            <div class="homepage__post-posts--header-nametime">
-                <div class="homepage__post-posts--header-name">Thiện Vsoul</div>
-                <div class="homepage__post-posts--header-time">
-                    December 14, 2021
-                </div>
-            </div>
-            <div class="homepage__post-posts--header-option">
-                <img
-                    src="/images/3dot.png"
-                    alt=""
-                    class="homepage__post-posts--header-option-3dot"
-                />
-            </div>
-        </div>
-        <div class="homepage__post-posts--content">
-            helooooooooooooooooasdddddddddddddddddddddccccccccccccssssssssssssssssssssssssssssccccccccccccccccccccccccccs
-        </div>
-        <div class="homepage__post-posts--stat">
-            <div class="homepage__post-posts--stat--like">
-                <img
-                    src="/images/like.png"
-                    alt=""
-                    class="homepage__post-posts--stat--like-icon"
-                />
-                9
-            </div>
-            <div class="homepage__post-posts--stat--cmt">11 comments</div>
-        </div>
-        <div class="homepage__post-posts--react">
-            <div class="homepage__post-posts--react--like">
-                <img
-                    src="/images/likebnw.png"
-                    alt=""
-                    class="homepage__post-posts--react--like-icon"
-                />
-                Like
-            </div>
-            <div class="homepage__post-posts--react--cmt">
-                <img
-                    src="/images/cmtbnw.png"
-                    alt=""
-                    class="homepage__post-posts--react--like-icon"
-                />
-                Comments
-            </div>
-        </div>
-        <div class="homepage__post-posts--content--cmt">
-            <p>View 6 more comments</p>
-
-            <div class="homepage__post-posts--content--1cmt">
-                <div class="homepage__post-posts--content--1cmt-avt">
-                    <img
-                        src="/images/avt.png"
-                        alt=""
-                        class="
-                            rounded-circle
-                            homepage__post-posts--content--cmt-avt
-                        "
-                    />
-                </div>
-                <div class="homepage__post-posts--content--1cmt-namecontent">
-                    <div class="homepage__post-posts--content--1cmt-name">
-                        Thiện Vsoul
-                        <div
-                            class="homepage__post-posts--content--1cmt-ifauthor"
-                        >
-                            Author
-                        </div>
-                    </div>
-                    <div class="homepage__post-posts--content--1cmt-content">
-                        xin chaao cac ban
-                    </div>
-                </div>
-                <div class="homepage__post-posts--content--1cmt-3dot">
-                    <img
-                        src="/images/3dot.png"
-                        alt=""
-                        class="
-                            homepage__post-posts--header-option-3dot
-                            homepage__upload-extra--live_video--img2
-                        "
-                    />
-                </div>
-            </div>
-
-            <div class="homepage__post-posts--content--1cmt">
-                <div class="homepage__post-posts--content--1cmt-avt">
-                    <img
-                        src="/images/avt.png"
-                        alt=""
-                        class="
-                            rounded-circle
-                            homepage__post-posts--content--cmt-avt
-                        "
-                    />
-                </div>
-                <div class="homepage__post-posts--content--1cmt-namecontent">
-                    <div class="homepage__post-posts--content--1cmt-name">
-                        Thiện Vsoul
-                        <div
-                            class="homepage__post-posts--content--1cmt-ifauthor"
-                        >
-                            Author
-                        </div>
-                    </div>
-                    <div class="homepage__post-posts--content--1cmt-content">
-                        xin chaao cac ban
-                    </div>
-                </div>
-                <div class="homepage__post-posts--content--1cmt-3dot">
-                    <img
-                        src="/images/3dot.png"
-                        alt=""
-                        class="
-                            homepage__post-posts--header-option-3dot
-                            homepage__upload-extra--live_video--img2
-                        "
-                    />
-                </div>
-            </div>
-
-            <div class="homepage__post-posts--content--1cmt">
-                <div class="homepage__post-posts--content--1cmt-avt">
-                    <img
-                        src="/images/avt.png"
-                        alt=""
-                        class="
-                            rounded-circle
-                            homepage__post-posts--content--cmt-avt
-                        "
-                    />
-                </div>
-                <div class="homepage__post-posts--content--1cmt-namecontent">
-                    <div class="homepage__post-posts--content--1cmt-name">
-                        Thiện Vsoul
-                        <div
-                            class="homepage__post-posts--content--1cmt-ifauthor"
-                        >
-                            Author
-                        </div>
-                    </div>
-                    <div class="homepage__post-posts--content--1cmt-content">
-                        xin
-                        cssssssssssssssssssssssssssshascssssssssssssssssssssssssssshascssssssssssssssssssssssssssshascssssssssssssssssssssssssssshascssssssssssssssssssssssssssshascssssssssssssssssssssssssssshasdsdasdasdasdsdasdasdasdsdsdaao
-                        cac ban
-                    </div>
-                </div>
-                <div class="homepage__post-posts--content--1cmt-3dot">
-                    <img
-                        src="/images/3dot.png"
-                        alt=""
-                        class="
-                            homepage__post-posts--header-option-3dot
-                            homepage__upload-extra--live_video--img2
-                        "
-                    />
-                </div>
-            </div>
-        </div>
-        <div class="homepage__post-posts--content--yourcmt">
-            <div class="homepage__post-posts--content--1cmt-avt">
-                <img
-                    src="/images/avt.png"
-                    alt=""
-                    class="
-                        rounded-circle
-                        homepage__post-posts--content--cmt-avt
-                    "
-                />
-            </div>
-            <input
-                type="text"
-                class="homepage__post-posts--content--yourcmtinput"
-            />
-            <div class="homepage__post-posts--content--yourcmticon">
-                <img
-                    src="/images/icon.png"
-                    class="homepage__upload-extra--live_video--img"
-                /><img
-                    src="/images/img.png"
-                    class="homepage__upload-extra--live_video--img"
-                /><img
-                    src="/images/send.png"
-                    class="homepage__upload-extra--live_video--img"
-                />
-            </div>
-        </div>
-    </div>
-</div>

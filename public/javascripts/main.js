@@ -13,3 +13,6 @@ $('.user-btn').click(function () {
 $('nav ul li').click(function () {
     $(this).addClass('active').siblings().removeClass('active');
 });
+$('.homepage__post-posts--header-option').click(function() {
+    $(this).toggleClass('show')
+})
