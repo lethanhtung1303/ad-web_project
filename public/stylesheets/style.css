@@ -429,3 +429,25 @@ nav ul li a span.rotate {
     font-weight: 400;
     overflow-wrap: break-word;
 }
+
+/* notifyTopic */
+
+.notifyTopic {
+    width: 20%;
+    display: inline-block;
+    height: 200px;
+    word-break: keep-all;
+    margin: 12px;
+}
+
+.notifyTopic__img {
+    width: 100%;
+}
+
+.notifyTopic__title {
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
