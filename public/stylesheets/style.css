@@ -387,21 +387,21 @@ nav ul li a span.rotate {
     margin: 25px auto 0;
 }
 
-.myNotify__content {
+.myNotify__container {
     border-radius: 12px;
     background-color: var(--first-color);
     margin: 12px 0;
     padding-bottom: 18px;
 }
 
-.myNotify__content__header {
+.myNotify__container__header {
     display: flex;
     padding: 18px 12px 10px 12px;
 }
 
-.myNotify__content__header__content {
+.myNotify__container__header__container {
     flex: 1;
-    margin-left: 15px;
+    margin: 0 15px;
 }
 
 .myNotify__title {
@@ -417,4 +417,15 @@ nav ul li a span.rotate {
 
 .myNotify__btn__dropdown {
     background-color: var(--first-color);
+}
+
+/* notifyDetail */
+.myNotify__content {
+    padding: 80px 18px;
+    margin: 12px 0;
+    background-color: aquamarine;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 400;
+    overflow-wrap: break-word;
 }
