@@ -1,1 +1,52 @@
-<h1>Login</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="958019244115-nk14eg5994g7nupg342j660nuvhms703.apps.googleusercontent.com">
+
+    <title>Đăng nhập</title>
+</head>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+<body>
+    <div class="container" id="login">
+        <h1 class="text-center">Đăng nhập</h1>
+        <dv class="row">
+            <div class="col-lg-6 row-ele" id="left">
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                
+            </div>
+            
+            <div class="col-lg-6 row-ele" >
+                <form action="/login" method="POST">
+                    <div id="input-user">
+                        <input type="text" name="email" id="email" required placeholder="Email"><br>
+                        <input type="password" name="password" id="password" required placeholder="Password"><br>
+                    </div>
+                    <div id="btn-rememberme">
+                        <div id="err"></div>
+                        <div class="text-success text-center" id="mess"></div>
+                        <% if(locals.err){ %>
+                            <div class="alert alert-danger alert-dismissible text-center">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong><%= err %></strong>
+                            </div>
+                        <% } %>
+                        <button type="submit" class="btn btn-primary" id="btn-login">Login</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="/javascripts/login.js"></script>
+</html>

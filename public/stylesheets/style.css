@@ -29,25 +29,26 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 }
 
 .header {
   background-color: rgb(37, 150, 190);
   color: white;
-  padding: 30px 20px;
+  padding: 10px 20px;
 }
 
 /* css hạn chế để mấy cái như này
 đặt tên class rồi css trên class thôi */
 
 nav ul {
-  /* background: #1b1b1b; */
+  background: #1b1b1b;
   list-style: none;
 }
 
 .col-md-3 {
+  background: #1b1b1b;
   width: 20%;
   float: left;
 }
@@ -80,7 +81,7 @@ nav ul li a {
   position: relative;
   color: white;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
   padding-left: 40px;
   font-weight: 500;
   display: block;
@@ -89,15 +90,12 @@ nav ul li a {
 }
 
 nav ul li.active a {
-  color: white;
   background: #1e1e1e;
-  border-left-color: cyan;
-}
+  }
 
 nav ul li a:hover {
-  color: cyan;
-  background: #1e1e1e;
-  border-left-color: rgb(96, 39, 230);
+  color: 1e1e1e;
+  background: cyan;
 }
 
 nav ul ul {
@@ -123,7 +121,7 @@ nav ul ul li {
 }
 
 nav ul ul li a {
-  font-size: 17px;
+  font-size: 18px;
   color: #e6e6e6;
   padding-left: 60px;
 }
@@ -131,7 +129,6 @@ nav ul ul li a {
 nav ul li.active ul li a {
   color: #e6e6e6;
   background: #1b1b1b;
-  border-left-color: transparent;
 }
 
 nav ul ul li a:hover {
@@ -246,7 +243,6 @@ nav ul li a span.rotate {
 
 .homepage__upload-extra--live_videobtn {
   border: none;
-  background-color: #eaeaef;
 }
 
 .homepage__upload-extra--live_videobtn div {
@@ -297,7 +293,7 @@ a.homepage__post-posts--header-name:hover, a.homepage__post-posts--content--1cmt
 .homepage__post-posts--content {
   padding: 80px 18px;
   margin: 12px 0;
-  background-color: rgb(122, 192, 218);
+  background-color: aquamarine;
   text-align: center;
   /* border-radius: 12px; */
   font-size: 36px;
