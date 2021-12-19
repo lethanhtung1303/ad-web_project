@@ -27,7 +27,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Xóa thông báo</a>
-                    <a class="dropdown-item" href="#">Chỉnh sửa</a>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#modalEditPost">Chỉnh sửa</a>
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Xóa thông báo</a>
-                    <a class="dropdown-item" href="#">Chỉnh sửa</a>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEditPost">Chỉnh sửa</a>
                 </div>
             </div>
         </div>
@@ -101,6 +101,39 @@
             <div class="col"></div>
             <a href="/notifyDetail" class="myNotify__detail__link">Xem chi tiết</a
             >
+        </div>
+    </div>
+</div>
+
+
+<!---Modal edit-->
+<div class="modal" id="modalEditPost">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Chỉnh sửa bài viết</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <form action="/">
+                <div class="container">
+                    <input type="hidden" name="idPost" id="idPost_MD">
+                    <div class="form-group">
+                        <label for="content">Nội dung:</label>
+                        <textarea class="form-control" rows="5" id="contentPost_MD"
+                            placeholder="Viết thông báo tại đây..." name="text"></textarea>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" id="btnEditPost" class="btn btn-primary" data-dismiss="modal">Chỉnh
+                        sửa</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
