@@ -246,6 +246,7 @@ nav ul li a span.rotate {
 
 .homepage__upload-extra--live_videobtn {
   border: none;
+  background-color: #eaeaef;
 }
 
 .homepage__upload-extra--live_videobtn div {
@@ -296,7 +297,7 @@ a.homepage__post-posts--header-name:hover, a.homepage__post-posts--content--1cmt
 .homepage__post-posts--content {
   padding: 80px 18px;
   margin: 12px 0;
-  background-color: aquamarine;
+  background-color: rgb(122, 192, 218);
   text-align: center;
   /* border-radius: 12px; */
   font-size: 36px;
