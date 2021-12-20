@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Student Portal</title>
+        <link href="https://stdportal.tdtu.edu.vn/logo.ico" rel="shortcut icon" type="image/png">
 
         <!-- stylesheets -->
         <link rel="stylesheet" href="/stylesheets/style.css" />
@@ -41,20 +42,26 @@
             <ul>
                 <li class="active">
                     <a href="/">
-                        <i class="fa fa-home" aria-hidden="true"></i> Trang chủ</a>
+                        <i class="fa fa-home" aria-hidden="true"></i> Trang
+                        chủ</a
+                    >
                 </li>
                 <li class="active">
                     <a href="/myPost">
-                        <i class="fa fa-indent" aria-hidden="true"></i> Bài viết của tôi</a>
+                        <i class="fa fa-indent" aria-hidden="true"></i> Bài viết
+                        của tôi</a
+                    >
                 </li>
                 <li class="active">
                     <a href="/myNotify">
-                        <i class="fa fa-list-alt" aria-hidden="true"></i> Thông báo của tôi
+                        <i class="fa fa-list-alt" aria-hidden="true"></i> Thông
+                        báo của tôi
                     </a>
                 </li>
                 <li class="active">
                     <a href="#" class="feat-btn">
-                        <i class="fa fa-bullhorn" aria-hidden="true"></i> Thông báo
+                        <i class="fa fa-bullhorn" aria-hidden="true"></i> Thông
+                        báo
                         <span class="fas fa-caret-down first"></span>
                     </a>
                     <ul class="feat-show">
@@ -76,13 +83,15 @@
                 </li>
                 <li class="active">
                     <a href="#" class="user-btn">
-                        <i class="fa fa-user" aria-hidden="true"></i> Thông tin cá nhân
+                        <i class="fa fa-user" aria-hidden="true"></i> Thông tin
+                        cá nhân
                         <span class="fas fa-caret-down third"></span>
                     </a>
                     <ul class="user-show">
                         <li><a href="/profile">Xem hồ sơ</a></li>
                         <li><a href="/changeAvt">Đổi hình đại diện</a></li>
                         <li><a href="/changePass">Đổi mật khẩu</a></li>
+                        <li><a href="/logout">Đăng xuất</a></li>
                     </ul>
                 </li>
             </ul>
@@ -92,8 +101,57 @@
 
         <div class="col-md-4">
             <div class="aside">
-                <%- include('../pages/announce') %>
+                <h3 class="text-center">Danh sách thông báo</h3>
+                <div class="myNotify__detail">
+                    <a href="/notifyList" class="myNotify__detail__link"
+                        >Xem tất cả <i class="fas fa-angle-double-right"></i
+                    ></a>
+                    <div class="col"></div>
+                </div>
 
+                <!-- myNotify -->
+                <div class="myNotify">
+                    <div class="mainNotify__container">
+                        <div class="myNotify__container__header">
+                            <div
+                                class="mainNotify__container__header__container"
+                            >
+                                <div class="myNotify__title">Thông báo Abc</div>
+                                <div class="myNotify__time">13-03-2000</div>
+                            </div>
+                        </div>
+                        <div class="myNotify__detail">
+                            <div class="col"></div>
+                            <a
+                                href="/notifyDetail"
+                                class="myNotify__detail__link"
+                                >Xem chi tiết</a
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- myNotify -->
+                <div class="myNotify">
+                    <div class="mainNotify__container">
+                        <div class="myNotify__container__header">
+                            <div
+                                class="mainNotify__container__header__container"
+                            >
+                                <div class="myNotify__title">Thông báo Abc</div>
+                                <div class="myNotify__time">13-03-2000</div>
+                            </div>
+                        </div>
+                        <div class="myNotify__detail">
+                            <div class="col"></div>
+                            <a
+                                href="/notifyDetail"
+                                class="myNotify__detail__link"
+                                >Xem chi tiết</a
+                            >
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

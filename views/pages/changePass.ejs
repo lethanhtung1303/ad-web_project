@@ -1,1 +1,25 @@
-<h1>Change Password</h1>
+<h3 class="text-center">Đổi mật khẩu</h3>
+
+<form action="/changePass" method="POST" id="form-changePass">
+    <div class="form-group">
+        <label for="password">Nhập mật khẩu:</label>
+        <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Nhập password"
+            id="password"
+            required=""
+        />
+        <label class="mt-2"for="password">Nhập lại mật khẩu:</label>
+        <input
+            type="password"
+            name="re-password"
+            class="form-control"
+            placeholder="Nhập lại password"
+            id="re-password"
+            required=""
+        />
+    </div>
+    <button type="submit" class="btn btn-primary">Đổi</button>
+</form>

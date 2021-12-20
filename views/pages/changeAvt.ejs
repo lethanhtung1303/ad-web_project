@@ -1,1 +1,20 @@
-<h1>Change Avata</h1>
+<h3 class="text-center">Đổi ảnh đại diện</h3>
+
+<div class="text-center mb-4">
+    <img class="rounded-circle" src="/images/avt.png" alt="" width="100px" />
+</div>
+
+<div class="container text-center" id="form-changeAvt">
+    <form action="/changeAvt" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <input
+                type="file"
+                name="picture"
+                class="form-control-file border"
+                required=""
+            />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Thay đổi</button>
+    </form>
+</div>

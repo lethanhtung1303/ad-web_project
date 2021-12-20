@@ -6,13 +6,14 @@
         <li class="page-item"><a class="page-link" href="#">3</a></li>
     </ul>
 </nav>
+
 <!-- myNotify -->
 <div class="myNotify">
     <div class="myNotify__container">
         <div class="myNotify__container__header">
             <div class="myNotify__container__header__container">
-                <div class="myNotify__title">Thông báo Abc</div>
-                <div class="myNotify__time">13-03-2000</div>
+                <div class="myNotify__title">Thông báo của tôi 01</div>
+                <div class="myNotify__time">01/01/1001</div>
             </div>
             <div class="dropdown">
                 <button
@@ -27,13 +28,19 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Xóa thông báo</a>
-                    <a class="dropdown-item" data-toggle="modal" data-target="#modalEditPost">Chỉnh sửa</a>
+                    <a
+                        class="dropdown-item"
+                        data-toggle="modal"
+                        data-target="#modalEditPost"
+                        >Chỉnh sửa</a
+                    >
                 </div>
             </div>
         </div>
         <div class="myNotify__detail">
             <div class="col"></div>
-            <a href="/notifyDetail" class="myNotify__detail__link">Xem chi tiết</a
+            <a href="/notifyDetail" class="myNotify__detail__link"
+                >Xem chi tiết</a
             >
         </div>
     </div>
@@ -44,8 +51,8 @@
     <div class="myNotify__container">
         <div class="myNotify__container__header">
             <div class="myNotify__container__header__container">
-                <div class="myNotify__title">Thông báo Abc</div>
-                <div class="myNotify__time">13-03-2000</div>
+                <div class="myNotify__title">Thông báo của tôi 02</div>
+                <div class="myNotify__time">02/02/2002</div>
             </div>
             <div class="dropdown">
                 <button
@@ -60,13 +67,19 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Xóa thông báo</a>
-                    <a class="dropdown-item" href="#">Chỉnh sửa</a>
+                    <a
+                        class="dropdown-item"
+                        data-toggle="modal"
+                        data-target="#modalEditPost"
+                        >Chỉnh sửa</a
+                    >
                 </div>
             </div>
         </div>
         <div class="myNotify__detail">
             <div class="col"></div>
-            <a href="/notifyDetail" class="myNotify__detail__link">Xem chi tiết</a
+            <a href="/notifyDetail" class="myNotify__detail__link"
+                >Xem chi tiết</a
             >
         </div>
     </div>
@@ -77,8 +90,8 @@
     <div class="myNotify__container">
         <div class="myNotify__container__header">
             <div class="myNotify__container__header__container">
-                <div class="myNotify__title">Thông báo Abc</div>
-                <div class="myNotify__time">13-03-2000</div>
+                <div class="myNotify__title">Thông báo của tôi 03</div>
+                <div class="myNotify__time">03/03/3003</div>
             </div>
             <div class="dropdown">
                 <button
@@ -93,45 +106,68 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Xóa thông báo</a>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#modalEditPost">Chỉnh sửa</a>
+                    <a
+                        class="dropdown-item"
+                        data-toggle="modal"
+                        data-target="#modalEditPost"
+                        >Chỉnh sửa</a
+                    >
                 </div>
             </div>
         </div>
         <div class="myNotify__detail">
             <div class="col"></div>
-            <a href="/notifyDetail" class="myNotify__detail__link">Xem chi tiết</a
+            <a href="/notifyDetail" class="myNotify__detail__link"
+                >Xem chi tiết</a
             >
         </div>
     </div>
 </div>
 
-
-<!---Modal edit-->
+<!-- /*===== Modal edit =====*/ -->
 <div class="modal" id="modalEditPost">
     <div class="modal-dialog">
         <div class="modal-content">
-
             <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title">Chỉnh sửa bài viết</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
             </div>
 
             <!-- Modal body -->
             <form action="/">
                 <div class="container">
-                    <input type="hidden" name="idPost" id="idPost_MD">
+                    <input type="hidden" name="idPost" id="idPost_MD" />
                     <div class="form-group">
                         <label for="content">Nội dung:</label>
-                        <textarea class="form-control" rows="5" id="contentPost_MD"
-                            placeholder="Viết thông báo tại đây..." name="text"></textarea>
+                        <textarea
+                            class="form-control"
+                            rows="5"
+                            id="contentPost_MD"
+                            placeholder="Viết thông báo tại đây..."
+                            name="text"
+                        ></textarea>
                     </div>
                 </div>
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                    <button type="button" id="btnEditPost" class="btn btn-primary" data-dismiss="modal">Chỉnh
-                        sửa</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                    <button
+                        type="button"
+                        id="btnEditPost"
+                        class="btn btn-primary"
+                        data-dismiss="modal"
+                    >
+                        Chỉnh sửa
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-danger"
+                        data-dismiss="modal"
+                    >
+                        Đóng
+                    </button>
                 </div>
             </form>
         </div>
