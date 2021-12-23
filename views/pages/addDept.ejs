@@ -1,3 +1,11 @@
+<% if(locals.mess){ %>
+    <div class="alert alert-success alert-dismissible text-center">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>
+            <%= mess %>
+        </strong>
+    </div>
+    <% } %>
 <div class="d-flex justify-content-between">
     <button class="h3 btn-dark btn-lg btn-block text-uppercase">
         Thêm phòng ban
@@ -5,7 +13,7 @@
 </div>
 
 <div class="container mt-3" id="form-addDepartment">
-    <form action="/addDepartment" method="POST" enctype="multipart/form-data">
+    <form action="/addDept" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="idUser">ID phòng ban:</label>
             <input
@@ -50,16 +58,15 @@
                 class="form-control-file border"
             />
         </div>
-
         <div class="form-group">
-            <label for="faculty">Quyền truy cập:</label><br />
-            <input type="checkbox" />
-            <label> Phòng điện toán </label><br />
-
-            <input type="checkbox" />
-            <label> Phòng điện toán </label><br />
-            <input type="checkbox" />
-            <label> Phòng điện toán </label><br />
+            <label for="faculty">Quyền truy cập:</label><br>
+            <% listAuths.forEach(val=> { %>
+                <input type="checkbox" id="<%= val.idCategory %>" name="<%= val.idCategory %>" value="<%= val.auths %>">
+                <label for="<%= val.idCategory %>">
+                    <%= val.name %>
+                </label><br>
+                <% }) %>
+        
         </div>
         <button type="submit" class="btn btn-outline-dark">Submit</button>
     </form>
