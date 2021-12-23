@@ -5,7 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Student Portal</title>
-        <link href="https://stdportal.tdtu.edu.vn/logo.ico" rel="shortcut icon" type="image/png">
+        <link
+            href="https://stdportal.tdtu.edu.vn/logo.ico"
+            rel="shortcut icon"
+            type="image/png"
+        />
 
         <!-- stylesheets -->
         <link rel="stylesheet" href="/stylesheets/style.css" />
@@ -52,12 +56,14 @@
                         của tôi</a
                     >
                 </li>
+                <% if(locals.profile.position === 0){ %>
                 <li class="active">
                     <a href="/myNotify">
                         <i class="fa fa-list-alt" aria-hidden="true"></i> Thông
                         báo của tôi
                     </a>
                 </li>
+                <% } %>
                 <li class="active">
                     <a href="#" class="feat-btn">
                         <i class="fa fa-bullhorn" aria-hidden="true"></i> Thông
@@ -71,6 +77,7 @@
                         </li>
                     </ul>
                 </li>
+                <% if(locals.profile.position === 0){ %>
                 <li class="active">
                     <a href="#" class="serv-btn"
                         ><i class="fa fa-list" aria-hidden="true"></i> Phòng ban
@@ -81,6 +88,7 @@
                         <li><a href="/addDept">Thêm phòng ban</a></li>
                     </ul>
                 </li>
+                <% } %>
                 <li class="active">
                     <a href="#" class="user-btn">
                         <i class="fa fa-user" aria-hidden="true"></i> Thông tin

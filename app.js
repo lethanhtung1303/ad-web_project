@@ -1,10 +1,15 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const expressSession = require('express-session');
+
+const db = require('./config/db');
 
 var indexRouter = require('./routes/index');
+var startRouter = require('./routes/start');
 var myPostRouter = require('./routes/myPost');
 var myNotifyRouter = require('./routes/myNotify');
 var notifyListRouter = require('./routes/notifyList');
@@ -18,6 +23,7 @@ var changePassRouter = require('./routes/changePass');
 var notifyDetailRouter = require('./routes/notifyDetail');
 var logoutRouter = require('./routes/logout');
 var loginRouter = require('./routes/login');
+var loginGGRouter = require('./routes/loginGG');
 
 var app = express();
 
@@ -31,7 +37,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(
+    expressSession({
+        resave: false,
+        saveUninitialized: false,
+        secret: process.env.COOKIE_SECRET,
+    }),
+);
+
 app.use('/', indexRouter);
+app.use('/start', startRouter);
 app.use('/myPost', myPostRouter);
 app.use('/myNotify', myNotifyRouter);
 app.use('/notifyList', notifyListRouter);
@@ -45,6 +60,7 @@ app.use('/changePass', changePassRouter);
 app.use('/notifyDetail', notifyDetailRouter);
 app.use('/logout', logoutRouter);
 app.use('/login', loginRouter);
+app.use('/loginGG', loginGGRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

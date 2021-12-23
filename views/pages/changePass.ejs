@@ -1,4 +1,15 @@
 <h3 class="text-center">Đổi mật khẩu</h3>
+<% if(locals.mess === 'success'){ %>
+<div class="alert alert-success alert-dismissible text-center">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong><%= mess %></strong>
+</div>
+<% } %> <% if(locals.mess === 'fail'){ %>
+<div class="alert alert-danger alert-dismissible text-center">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong><%= mess %></strong>
+</div>
+<% } %>
 
 <form action="/changePass" method="POST" id="form-changePass">
     <div class="form-group">
@@ -11,13 +22,13 @@
             id="password"
             required=""
         />
-        <label class="mt-2"for="password">Nhập lại mật khẩu:</label>
+        <label class="mt-2" for="password">Nhập lại mật khẩu:</label>
         <input
             type="password"
-            name="re-password"
+            name="rePassword"
             class="form-control"
             placeholder="Nhập lại password"
-            id="re-password"
+            id="rePassword"
             required=""
         />
     </div>

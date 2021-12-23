@@ -1,7 +1,12 @@
 <h3 class="text-center">Đổi ảnh đại diện</h3>
 
 <div class="text-center mb-4">
-    <img class="rounded-circle" src="/images/avt.png" alt="" width="100px" />
+    <img
+        class="rounded-circle"
+        src="<%= profile.picture %>"
+        alt=""
+        width="100px"
+    />
 </div>
 
 <div class="container text-center" id="form-changeAvt">
@@ -11,7 +16,7 @@
                 type="file"
                 name="picture"
                 class="form-control-file border"
-                required=""
+                required
             />
         </div>
 

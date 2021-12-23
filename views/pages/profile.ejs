@@ -1,8 +1,19 @@
 <h3 class="text-center">Thông tin cá nhân</h3>
 <div class="text-center">
-    <img class="rounded-circle" src="/images/avt.png" alt="" width="100px" />
+    <img
+        class="rounded-circle"
+        src="<%= profile.picture %>"
+        alt=""
+        width="100px"
+    />
 </div>
-<form id="form-profile" action="/updateProfile" method="POST">
+<% if(locals.mess){ %>
+<div class="alert alert-success alert-dismissible text-center">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong><%= mess %></strong>
+</div>
+<% } %>
+<form id="form-profile" action="/profile" method="POST">
     <div class="form-group">
         <label for="idUser">ID:</label>
         <input
@@ -11,7 +22,7 @@
             placeholder="Enter idUser"
             id="idUser"
             name="idUser"
-            value="51800830"
+            value="<%= profile.idUser %>"
             readonly=""
         />
     </div>
@@ -23,7 +34,7 @@
             class="form-control"
             placeholder="Enter name"
             id="name"
-            value="Lê Thanh Tùng"
+            value="<%= profile.name %>"
             readonly=""
         />
     </div>
@@ -36,18 +47,25 @@
             name="email"
             placeholder="Enter email"
             id="email"
-            value="51800830@student.tdtu.edu.vn"
+            value="<%= profile.email %>"
             readonly=""
         />
     </div>
 
+    <% if(profile.position === 1){ %>
     <div class="form-group">
         <label for="gender">Giới tính</label>
-
-        <select name="gender" id="gender" value="0">
+        <% if(profile.gender === 1){ %>
+        <select name="gender" id="gender" value="<%= profile.gender %>">
+            <option value="1">Nữ</option>
+            <option value="0">Nam</option>
+        </select>
+        <% }else{ %>
+        <select name="gender" id="gender" value="<%= profile.gender %>">
             <option value="0">Nam</option>
             <option value="1">Nữ</option>
         </select>
+        <% } %>
     </div>
 
     <div class="form-group">
@@ -55,11 +73,11 @@
         <input
             type="text"
             class="form-control"
-            value=""
+            value="<%= profile.classroom %>"
             name="classroom"
             placeholder="Enter class"
             id="classroom"
-            required=""
+            required
         />
     </div>
 
@@ -69,12 +87,13 @@
             type="text"
             name="faculty"
             class="form-control"
-            value=""
+            value="<%= profile.faculty %>"
             placeholder="Enter faculty"
             id="faculty"
-            required=""
+            required
         />
     </div>
 
     <button type="submit" class="btn btn-primary">Thay đổi</button>
+    <% } %>
 </form>
