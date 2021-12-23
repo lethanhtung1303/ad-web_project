@@ -9,7 +9,7 @@ const expressSession = require('express-session');
 const db = require('./config/db');
 
 var indexRouter = require('./routes/index');
-var startRouter = require('./routes/start');
+var adminRouter = require('./routes/admin');
 var myPostRouter = require('./routes/myPost');
 var myNotifyRouter = require('./routes/myNotify');
 var notifyListRouter = require('./routes/notifyList');
@@ -46,7 +46,7 @@ app.use(
 );
 
 app.use('/', indexRouter);
-app.use('/start', startRouter);
+app.use('/admin', adminRouter);
 app.use('/myPost', myPostRouter);
 app.use('/myNotify', myNotifyRouter);
 app.use('/notifyList', notifyListRouter);

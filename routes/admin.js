@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
                 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
                 18, 19, 20, 21, 22,
             ];
-            var Nusers = new users({
+            var admin_users = new users({
                 auths: arr,
                 idUser: 'admin',
                 password: bcrypt.hashSync('1234', 10),
@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
                 picture: '/images/logo.jpg',
             });
 
-            Nusers.save();
+            admin_users.save();
 
             var list = [
                 {
