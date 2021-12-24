@@ -24,6 +24,7 @@ var notifyDetailRouter = require('./routes/notifyDetail');
 var logoutRouter = require('./routes/logout');
 var loginRouter = require('./routes/login');
 var loginGGRouter = require('./routes/loginGG');
+var addAnnounceRouter = require('./routes/addAnnounce');
 
 var app = express();
 
@@ -61,7 +62,7 @@ app.use('/notifyDetail', notifyDetailRouter);
 app.use('/logout', logoutRouter);
 app.use('/login', loginRouter);
 app.use('/loginGG', loginGGRouter);
-
+app.use('/addAnnounce', addAnnounceRouter)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));
