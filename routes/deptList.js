@@ -1,11 +1,26 @@
 var express = require('express');
 var router = express.Router();
+const users = require('../models/users')
 
-/* GET users listing. */
 router.get('/', function (req, res, next) {
-    var profile = req.session.profile;
-    var content = '../pages/deptList';
-    res.render('layouts/main', { profile, content });
-});
+     if(!req.session.profile)
+        return res.redirect('/login')
+    
+    var profile = req.session.profile
+    
+    if(profile.position !== 0)
+        return res.redirect('/login')
+    
+       var content = '../pages/deptList';
 
+    users.find({"position" : 2}).exec()
+        .then(data => {
+            if(req.query.mess)
+                mess = req.query.mess
+            return res.render("layouts/main", {profile, mess, content, data})
+        })
+    .catch(e => console.log(e))
+    
+});
 module.exports = router;
+
