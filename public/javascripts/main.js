@@ -62,3 +62,35 @@ function signOut() {
         console.log('User signed out.');
     });
 }
+
+var btnNotify = document.getElementById('btnNotify');
+btnNotify.addEventListener('click', () => {
+    var contentNotify = document.getElementById('contentNotify').value;
+    var auths = document.getElementById('auths').value;
+    var tittle = document.getElementById('tittle').value;
+
+    if (contentNotify && auths && tittle) {
+        fetch('/addNotify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                content: contentNotify,
+                tittle: tittle,
+                auths: auths,
+            }),
+        })
+            .then((res) => res.json())
+            .then((json) => {
+                if (json.code === 0) {
+                    document.getElementById('contentNotify').value = '';
+                    document.getElementById('tittle').value = '';
+                    // loadListNotifysById(json.data.idNotify)
+                    // msg = json.data.name + " vừa đăng thông báo " + "<a href='/NotifyDetail?idNotify="+json.data.idNotify+"'>XEM</a>"
+                    // socket.emit("client_Send_Data", msg)
+                }
+            })
+            .catch((e) => console.log(e));
+    }
+});

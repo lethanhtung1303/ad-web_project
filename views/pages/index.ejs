@@ -24,7 +24,7 @@
             </Button>
         </div>
         <div class="homepage__upload-extra--photovideo">
-            
+
             <Button class="homepage__upload-extra--live_videobtn">
                 <div><img
                     src="/images/photo.png"
@@ -41,145 +41,205 @@
                     />
                     Feeling/Activity
             </Button>
-            
+
         </div>
     </div>
 </div> -->
 
-<button id="btn-Post" type="button" data-toggle="modal" data-target="#myModal" class="btn btn-secondary">Đăng bài viết</button>
+<button
+    id="btn-Post"
+    type="button"
+    data-toggle="modal"
+    data-target="#myModal"
+    class="btn btn-secondary"
+>
+    Đăng bài viết
+</button>
 <% if(locals.profile.position !== 1){ %>
-    <button id="btn-Announce" type="button" data-toggle="modal" data-target="#modalAnnounce" class="btn btn-secondary">
-        Đăng thông báo
-    </button>
+<button
+    id="btn-Notify"
+    type="button"
+    data-toggle="modal"
+    data-target="#modalNotify"
+    class="btn btn-secondary"
+>
+    Đăng thông báo
+</button>
 <% } %>
 <div class="container" id="postArea"></div>
 <div id="loadPage"></div>
 
 <!-- modal post -->
-    <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Thêm bài viết</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+            </div>
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Thêm bài viết</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <!-- Modal body -->
+            <form action="/action_page.php">
+                <div class="container">
+                    <div class="form-group">
+                        <label for="content">Nội dung:</label>
+                        <textarea
+                            class="form-control"
+                            rows="5"
+                            id="contentPost"
+                            placeholder="Viết tại đây..."
+                            name="text"
+                        ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Link video hoặc hình ảnh:</label>
+                        <textarea
+                            class="form-control"
+                            rows="2"
+                            id="link"
+                            placeholder="Link video hoặc hình ảnh..."
+                            name="text"
+                        ></textarea>
+                    </div>
                 </div>
 
-                <!-- Modal body -->
-                <form action="/action_page.php">
-                    <div class="container">
-                        <div class="form-group">
-                            <label for="content">Nội dung:</label>
-                            <textarea class="form-control" rows="5" id="contentPost" placeholder="Viết tại đây..."
-                                name="text"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="content">Link video hoặc hình ảnh:</label>
-                            <textarea class="form-control" rows="2" id="link" placeholder="Link video hoặc hình ảnh..."
-                                name="text"></textarea>
-                        </div>
-
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" id="btnPost" class="btn btn-primary" data-dismiss="modal">Đăng</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                    </div>
-                </form>
-            </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        id="btnPost"
+                        class="btn btn-primary"
+                        data-dismiss="modal"
+                    >
+                        Đăng
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-danger"
+                        data-dismiss="modal"
+                    >
+                        Đóng
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
-<!-- modal announce -->
-    <div class="modal" id="modalAnnounce">
-        <div class="modal-dialog">
-            <div class="modal-content">
+<!-- modal Notify -->
+<div class="modal" id="modalNotify">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Thêm thông báo</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+            </div>
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Thêm thông báo</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <!-- Modal body -->
+            <form action="/">
+                <div class="container">
+                    <div class="form-group">
+                        <label for="tittle">Tiêu đề:</label>
+                        <textarea
+                            class="form-control"
+                            rows="2"
+                            id="tittle"
+                            placeholder="Tiêu đề thông báo..."
+                            name="text"
+                        ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Nội dung:</label>
+                        <textarea
+                            class="form-control"
+                            rows="5"
+                            id="contentNotify"
+                            placeholder="Viết thông báo tại đây..."
+                            name="text"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="auths">Chọn phòng ban</label>
+                        <select name="auths" id="auths">
+                            <% profile.auths.forEach(val => { %> <% if(val ===
+                            1) { %>
+                            <option value="1">CTHSSV</option>
+                            <% }else if(val === 2){ %>
+                            <option value="2">PDH</option>
+                            <% }else if(val === 3){ %>
+                            <option value="3">PKT</option>
+                            <% }else if(val === 4){ %>
+                            <option value="4">PTC</option>
+                            <% }else if(val === 5){ %>
+                            <option value="5">CLC</option>
+                            <% }else if(val === 6){ %>
+                            <option value="6">TTTH</option>
+                            <% }else if(val === 7){ %>
+                            <option value="7">SDTC</option>
+                            <% }else if(val === 8){ %>
+                            <option value="8">ATEM</option>
+                            <% }else if(val === 9){ %>
+                            <option value="9">CSV</option>
+                            <% }else if(val === 10){ %>
+                            <option value="10">KL</option>
+                            <% }else if(val === 11){ %>
+                            <option value="11">TTNNTHVH</option>
+                            <% }else if(val === 12){ %>
+                            <option value="12">VCSKT</option>
+                            <% }else if(val === 13){ %>
+                            <option value="13">KDDT</option>
+                            <% }else if(val === 14){ %>
+                            <option value="14">KCNTT</option>
+                            <% }else if(val === 15){ %>
+                            <option value="15">LQTKD</option>
+                            <% }else if(val === 16){ %>
+                            <option value="16">KMT</option>
+                            <% }else if(val === 17){ %>
+                            <option value="17">KLDCD</option>
+                            <% }else if(val === 18){ %>
+                            <option value="18">KTCNH</option>
+                            <% }else if(val === 19){ %>
+                            <option value="19">KGDQT</option>
+                            <% }else if(val === 20){ %>
+                            <option value="20">KMTCN</option>
+                            <% }else if(val === 21){ %>
+                            <option value="21">PSDH</option>
+                            <% }else{ %>
+                            <option value="22">PDTMT</option>
+                            <% } %> <% }) %>
+                        </select>
+                    </div>
                 </div>
 
-                <!-- Modal body -->
-                <form action="/">
-                    <div class="container">
-                        <div class="form-group">
-                            <label for="tittle">Tiêu đề:</label>
-                            <textarea class="form-control" rows="2" id="tittle" placeholder="Tiêu đề thông báo..."
-                                name="text"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="content">Nội dung:</label>
-                            <textarea class="form-control" rows="5" id="contentAnnounce" placeholder="Viết thông báo tại đây..."
-                                name="text"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="auths">Chọn phòng ban</label>
-                            <select name="auths" id="auths">
-                               <% profile.auths.forEach(val => { %>
-                                    <% if(val === 1) { %>
-                                        <option value="1">CTHSSV</option>
-                                    <% }else if(val === 2){ %>
-                                        <option value="2">PDH</option>
-                                    <% }else if(val === 3){ %>
-                                        <option value="3">PKT</option>
-                                    <% }else if(val === 4){ %>
-                                        <option value="4">PTC</option>
-                                    <% }else if(val === 5){ %>
-                                        <option value="5">CLC</option>
-                                    <% }else if(val === 6){ %>
-                                        <option value="6">TTTH</option>
-                                    <% }else if(val === 7){ %>
-                                        <option value="7">SDTC</option>
-                                    <% }else if(val === 8){ %>
-                                        <option value="8">ATEM</option>
-                                    <% }else if(val === 9){ %>
-                                        <option value="9">CSV</option>
-                                    <% }else if(val === 10){ %>
-                                        <option value="10">KL</option>
-                                    <% }else if(val === 11){ %>
-                                        <option value="11">TTNNTHVH</option>
-                                    <% }else if(val === 12){ %>
-                                        <option value="12">VCSKT</option>
-                                    <% }else if(val === 13){ %>
-                                        <option value="13">KDDT</option>
-                                    <% }else if(val === 14){ %>
-                                        <option value="14">KCNTT</option>
-                                    <% }else if(val === 15){ %>
-                                        <option value="15">LQTKD</option>
-                                    <% }else if(val === 16){ %>
-                                        <option value="16">KMT</option>    
-                                    <% }else if(val === 17){ %>
-                                        <option value="17">KLDCD</option>
-                                    <% }else if(val === 18){ %>
-                                        <option value="18">KTCNH</option>
-                                    <% }else if(val === 19){ %>
-                                        <option value="19">KGDQT</option>
-                                    <% }else if(val === 20){ %>
-                                        <option value="20">KMTCN</option>
-                                    <% }else if(val === 21){ %>
-                                        <option value="21">PSDH</option>
-                                    <% }else{ %>
-                                        <option value="22">PDTMT</option>
-                                    <% } %>
-                                <% }) %>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="button" id="btnAnnounce"  class="btn btn-primary" data-dismiss="modal">Đăng</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                    </div>
-                </form>
-            </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        id="btnNotify"
+                        class="btn btn-primary"
+                        data-dismiss="modal"
+                    >
+                        Đăng
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-danger"
+                        data-dismiss="modal"
+                    >
+                        Đóng
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
 <div class="homepage__post">
     <div class="homepage__post-posts">
@@ -192,7 +252,9 @@
                 />
             </div>
             <div class="homepage__post-posts--header-nametime">
-                <a class="homepage__post-posts--header-name" href="/profile">Thiện Vsoul</a>
+                <a class="homepage__post-posts--header-name" href="/profile"
+                    >Thiện Vsoul</a
+                >
                 <div class="homepage__post-posts--header-time">
                     December 14, 2021
                 </div>
@@ -231,7 +293,11 @@
                 </div>
                 <div class="homepage__post-posts--content--1cmt-namecontent">
                     <div class="homepage__post-posts--content--1cmt-name">
-                        <a class="homepage__post-posts--header-name" href="/profile">Thiện Vsoul</a>
+                        <a
+                            class="homepage__post-posts--header-name"
+                            href="/profile"
+                            >Thiện Vsoul</a
+                        >
                         <div
                             class="homepage__post-posts--content--1cmt-ifauthor"
                         >
@@ -257,7 +323,11 @@
                 </div>
                 <div class="homepage__post-posts--content--1cmt-namecontent">
                     <div class="homepage__post-posts--content--1cmt-name">
-                        <a class="homepage__post-posts--header-name" href="/profile">Thiện Vsoul</a>
+                        <a
+                            class="homepage__post-posts--header-name"
+                            href="/profile"
+                            >Thiện Vsoul</a
+                        >
                         <div
                             class="homepage__post-posts--content--1cmt-ifauthor"
                         >
@@ -283,7 +353,11 @@
                 </div>
                 <div class="homepage__post-posts--content--1cmt-namecontent">
                     <div class="homepage__post-posts--content--1cmt-name">
-                        <a class="homepage__post-posts--content--1cmt-namen" href="/profile">Thiện Vsoul</a>
+                        <a
+                            class="homepage__post-posts--content--1cmt-namen"
+                            href="/profile"
+                            >Thiện Vsoul</a
+                        >
                         <div
                             class="homepage__post-posts--content--1cmt-ifauthor"
                         >
@@ -314,24 +388,25 @@
                 class="homepage__post-posts--content--yourcmtinput"
             />
             <div class="homepage__post-posts--content--yourcmticon">
-                <button class="homepage__post-posts--content--yourcmticon1"><img
-                    src="/images/icon.png"
-                    class="homepage__upload-extra--live_video--img"
-                /></button>
-                <button class="homepage__post-posts--content--yourcmticon2"><img
-                    src="/images/img.png"
-                    class="homepage__upload-extra--live_video--img"
-                /></button>
-                <button class="homepage__post-posts--content--yourcmticon3"><img
-                    src="/images/send.png"
-                    class="homepage__upload-extra--live_video--img"
-                /></button>
+                <button class="homepage__post-posts--content--yourcmticon1">
+                    <img
+                        src="/images/icon.png"
+                        class="homepage__upload-extra--live_video--img"
+                    />
+                </button>
+                <button class="homepage__post-posts--content--yourcmticon2">
+                    <img
+                        src="/images/img.png"
+                        class="homepage__upload-extra--live_video--img"
+                    />
+                </button>
+                <button class="homepage__post-posts--content--yourcmticon3">
+                    <img
+                        src="/images/send.png"
+                        class="homepage__upload-extra--live_video--img"
+                    />
+                </button>
             </div>
         </div>
     </div>
 </div>
-
-<script src="/javascripts/index.js"></script>
-
-
-

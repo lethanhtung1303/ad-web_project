@@ -11,6 +11,7 @@ const db = require('./config/db');
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
 var myPostRouter = require('./routes/myPost');
+var addNotifyRouter = require('./routes/addNotify');
 var myNotifyRouter = require('./routes/myNotify');
 var notifyListRouter = require('./routes/notifyList');
 var notifyListTopicRouter = require('./routes/notifyListTopic');
@@ -24,7 +25,6 @@ var notifyDetailRouter = require('./routes/notifyDetail');
 var logoutRouter = require('./routes/logout');
 var loginRouter = require('./routes/login');
 var loginGGRouter = require('./routes/loginGG');
-var addAnnounceRouter = require('./routes/addAnnounce');
 
 var app = express();
 
@@ -49,6 +49,7 @@ app.use(
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 app.use('/myPost', myPostRouter);
+app.use('/addNotify', addNotifyRouter);
 app.use('/myNotify', myNotifyRouter);
 app.use('/notifyList', notifyListRouter);
 app.use('/notifyListTopic', notifyListTopicRouter);
@@ -62,7 +63,7 @@ app.use('/notifyDetail', notifyDetailRouter);
 app.use('/logout', logoutRouter);
 app.use('/login', loginRouter);
 app.use('/loginGG', loginGGRouter);
-app.use('/addAnnounce', addAnnounceRouter)
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     next(createError(404));

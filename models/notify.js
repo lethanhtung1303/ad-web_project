@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const announces = new Schema({
-    idAnnounce: String,
+const notify = new Schema({
+    idNotify: String,
     idUser: String,
     name: String,
     picture: String,
@@ -13,4 +13,4 @@ const announces = new Schema({
     auths: Number,
 });
 
-module.exports = mongoose.model('announce', announces);
+module.exports = mongoose.model('notify', notify);
