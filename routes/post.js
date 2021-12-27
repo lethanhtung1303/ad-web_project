@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var dateFormat = require('dateformat');
+
 const posts = require('../models/posts');
 
 router.get('/', (req, res) => {
@@ -32,19 +34,11 @@ router.post('/', (req, res) => {
                         code: 3,
                         message: 'id post exist, please try again',
                     });
-                var date = new Date();
-                var dateTime =
-                    date.getUTCFullYear() +
-                    '/' +
-                    ('0' + (date.getUTCMonth() + 1)).slice(-2) +
-                    '/' +
-                    ('0' + date.getUTCDate()).slice(-2) +
-                    ' ' +
-                    ('0' + date.getUTCHours()).slice(-2) +
-                    ':' +
-                    ('0' + date.getUTCMinutes()).slice(-2) +
-                    ':' +
-                    ('0' + date.getUTCSeconds()).slice(-2);
+                var now = new Date();
+                var dateTime = dateFormat(
+                    now,
+                    'dddd, mmmm dS, yyyy, h:MM:ss TT',
+                );
                 var newPost = new posts({
                     idPost: idPost,
                     idUser: profile.idUser,
