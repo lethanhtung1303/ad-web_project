@@ -35,11 +35,15 @@ router.post('/', (req, res) => {
 
                 var date = new Date();
                 var dateTime =
-                    date.getFullYear().toString() +
+                    date.getDate() +
                     '-' +
-                    (date.getMonth() + 1).toString() +
+                    (date.getMonth() + 1) +
                     '-' +
-                    date.getDate().toString();
+                    date.getFullYear() +
+                    ' ' +
+                    date.getHours() +
+                    ':' +
+                    date.getMinutes();
                 var newPost = new posts({
                     idPost: idPost,
                     idUser: profile.idUser,
