@@ -10,6 +10,7 @@ const db = require('./config/db');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
+var postRouter = require('./routes/post');
 var myPostRouter = require('./routes/myPost');
 var addNotifyRouter = require('./routes/addNotify');
 var myNotifyRouter = require('./routes/myNotify');
@@ -48,6 +49,7 @@ app.use(
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+app.use('/post', postRouter);
 app.use('/myPost', myPostRouter);
 app.use('/addNotify', addNotifyRouter);
 app.use('/myNotify', myNotifyRouter);
