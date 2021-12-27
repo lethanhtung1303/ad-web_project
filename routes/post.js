@@ -22,9 +22,7 @@ router.post('/', (req, res) => {
     var profile = req.session.profile;
 
     if (content) {
-        var idPost =
-            'P' +
-            String(Math.floor(Math.random() * (999999 - 100000)) + 100000);
+        var idPost = 'P' + Date.now();
         posts
             .find({ idPost: idPost })
             .exec()
