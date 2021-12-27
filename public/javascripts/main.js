@@ -454,11 +454,22 @@ function loadPostById(idPost) {
                     `;
 
                         if (val.link) {
+                            var video_id = val.link.split('v=')[1];
+                            var ampersandPosition = video_id.indexOf('&');
+                            if (ampersandPosition != -1) {
+                                video_id = video_id.substring(
+                                    0,
+                                    ampersandPosition,
+                                );
+                            }
                             var div = document.createElement('div');
                             div.innerHTML = val.content;
 
                             var embed = document.createElement('embed');
-                            embed.setAttribute('src', val.link);
+                            embed.setAttribute(
+                                'src',
+                                `https://www.youtube.com/embed/${video_id}`,
+                            );
                             embed.setAttribute('height', '300px');
                             embed.setAttribute('width', '100%');
                             embed.setAttribute('class', 'text-center');

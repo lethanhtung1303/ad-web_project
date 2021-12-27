@@ -32,18 +32,19 @@ router.post('/', (req, res) => {
                         code: 3,
                         message: 'id post exist, please try again',
                     });
-
                 var date = new Date();
                 var dateTime =
-                    date.getDate() +
-                    '-' +
-                    (date.getMonth() + 1) +
-                    '-' +
-                    date.getFullYear() +
+                    date.getUTCFullYear() +
+                    '/' +
+                    ('0' + (date.getUTCMonth() + 1)).slice(-2) +
+                    '/' +
+                    ('0' + date.getUTCDate()).slice(-2) +
                     ' ' +
-                    date.getHours() +
+                    ('0' + date.getUTCHours()).slice(-2) +
                     ':' +
-                    date.getMinutes();
+                    ('0' + date.getUTCMinutes()).slice(-2) +
+                    ':' +
+                    ('0' + date.getUTCSeconds()).slice(-2);
                 var newPost = new posts({
                     idPost: idPost,
                     idUser: profile.idUser,
