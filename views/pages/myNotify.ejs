@@ -1,167 +1,16 @@
 <h3 class="text-center">Thông báo của tôi</h3>
-<nav aria-label="Page navigation example">
+<div>
+    <ul class="pagination" id="pagination"></ul>
+</div>
+<!-- <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
         <li class="page-item"><a class="page-link" href="#">1</a></li>
         <li class="page-item"><a class="page-link" href="#">2</a></li>
         <li class="page-item"><a class="page-link" href="#">3</a></li>
     </ul>
-</nav>
+</nav> -->
 
-<!-- myNotify -->
-<div class="myNotify">
-    <div class="myNotify__container">
-        <div class="myNotify__container__header">
-            <div class="myNotify__container__header__container">
-                <div class="myNotify__title">Thông báo của tôi 01</div>
-                <div class="myNotify__time">01/01/1001</div>
-            </div>
-            <div class="dropdown">
-                <button
-                    class="btn myNotify__btn__dropdown"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                >
-                    <i class="fas fa-ellipsis-v"></i>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Xóa thông báo</a>
-                    <a
-                        class="dropdown-item"
-                        data-toggle="modal"
-                        data-target="#modalEditPost"
-                        >Chỉnh sửa</a
-                    >
-                </div>
-            </div>
-        </div>
-        <div class="myNotify__detail">
-            <div class="col"></div>
-            <a href="/notifyDetail" class="myNotify__detail__link"
-                >Xem chi tiết</a
-            >
-        </div>
-    </div>
-</div>
-
-<!-- myNotify -->
-<div class="myNotify">
-    <div class="myNotify__container">
-        <div class="myNotify__container__header">
-            <div class="myNotify__container__header__container">
-                <div class="myNotify__title">Thông báo của tôi 02</div>
-                <div class="myNotify__time">02/02/2002</div>
-            </div>
-            <div class="dropdown">
-                <button
-                    class="btn myNotify__btn__dropdown"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                >
-                    <i class="fas fa-ellipsis-v"></i>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Xóa thông báo</a>
-                    <a
-                        class="dropdown-item"
-                        data-toggle="modal"
-                        data-target="#modalEditPost"
-                        >Chỉnh sửa</a
-                    >
-                </div>
-            </div>
-        </div>
-        <div class="myNotify__detail">
-            <div class="col"></div>
-            <a href="/notifyDetail" class="myNotify__detail__link"
-                >Xem chi tiết</a
-            >
-        </div>
-    </div>
-</div>
-
-<!-- myNotify -->
-<div class="myNotify">
-    <div class="myNotify__container">
-        <div class="myNotify__container__header">
-            <div class="myNotify__container__header__container">
-                <div class="myNotify__title">Thông báo của tôi 03</div>
-                <div class="myNotify__time">03/03/3003</div>
-            </div>
-            <div class="dropdown">
-                <button
-                    class="btn myNotify__btn__dropdown"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                >
-                    <i class="fas fa-ellipsis-v"></i>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Xóa thông báo</a>
-                    <a
-                        class="dropdown-item"
-                        data-toggle="modal"
-                        data-target="#modalEditPost"
-                        >Chỉnh sửa</a
-                    >
-                </div>
-            </div>
-        </div>
-        <div class="myNotify__detail">
-            <div class="col"></div>
-            <a href="/notifyDetail" class="myNotify__detail__link"
-                >Xem chi tiết</a
-            >
-        </div>
-    </div>
-</div>
-
-<!-- myNotify -->
-<div class="myNotify">
-    <div class="myNotify__container">
-        <div class="myNotify__container__header">
-            <div class="myNotify__container__header__container">
-                <div class="myNotify__title">Thông báo của tôi 04</div>
-                <div class="myNotify__time">04/04/4004</div>
-            </div>
-            <div class="dropdown">
-                <button
-                    class="btn myNotify__btn__dropdown"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                >
-                    <i class="fas fa-ellipsis-v"></i>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Xóa thông báo</a>
-                    <a
-                        class="dropdown-item"
-                        data-toggle="modal"
-                        data-target="#modalEditPost"
-                        >Chỉnh sửa</a
-                    >
-                </div>
-            </div>
-        </div>
-        <div class="myNotify__detail">
-            <div class="col"></div>
-            <a href="/notifyDetail" class="myNotify__detail__link"
-                >Xem chi tiết</a
-            >
-        </div>
-    </div>
-</div>
+<div id="myNotifyList"></div>
 
 <!-- /*===== Modal edit =====*/ -->
 <div class="modal" id="modalEditPost">
@@ -176,9 +25,21 @@
             </div>
 
             <!-- Modal body -->
-            <form action="/">
+            <form action="/editNotify/editNotify" method="Post">
                 <div class="container">
-                    <input type="hidden" name="idPost" id="idPost_MD" />
+                    <input type="hidden" name="idNotify" id="idNotify" />
+                    <input type="hidden" id="page_MD" />
+                    <div class="form-group">
+                        <label for="content">Tiêu đề:</label>
+                        <textarea
+                            class="form-control"
+                            rows="1"
+                            id="tittle_MD"
+                            placeholder="Viết."
+                            name="text"
+                        ></textarea>
+                    </div>
+
                     <div class="form-group">
                         <label for="content">Nội dung:</label>
                         <textarea
@@ -212,3 +73,5 @@
         </div>
     </div>
 </div>
+<script src="/javascripts/listMyAnnounces.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

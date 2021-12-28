@@ -1,32 +1,22 @@
 <div>
-    <h4 class="text-center text-dark text-uppercase mt-5">Thông báo học phí</h4>
+    <h4 class="text-center text-dark text-uppercase mt-5"><%= data[0].tittle %></h4>
 </div>
 
 <div class="container mt-4" id="AnnouDetail">
     <div id="info-add">
         <u>
-            <i>Phòng Tài chính</a></i>&nbsp;|
-            <i>Ngày đăng 03/12/2021</i>
+            <i><% listCategory.forEach(val => { %>
+                <%if(data[0].auths === val.auths){ %>
+                <h6>Chuyên đề: <%= val.name %></h6>
+                <% } %>
+            <% }) %></a></i>&nbsp;|
+            <i>Ngày đăng <%= data[0].dateTime %></i>
         </u>
     </div>
     <div id="contentAnnou" class="mt-2">
         <div>
-            Căn cứ theo kế hoạch năm học 2021-2022 đã được Ban giám hiệu phê duyệt, Phòng Tài chính thông báo thời
-            gian thu học
-            phí
-            cho học kỳ 1/2021-2022 sau:
-
-            A. Đối tượng:
-
-            - Sinh viên có kết quả đăng ký môn học ở học kỳ 1/2021-2022 chưa hoàn thành học phí nhưng không nộp đơn
-            gia hạn học
-            phí
-            trên hệ thống thông tin sinh viên.
-
-            - Sinh viên Khoa MTBHLĐ và Khoa KTCT có kế hoạch thực hiện ĐATN/KLTN trong học kỳ 1/2021-2022.
-
-            B. Thời gian thu từ ngày 06/12/2021 đến 10/12/2021.
+            <%= data[0].content %>
         </div>
-        <div class="text-md-end mt-2">Thực hiện: Nhân viên phòng ban</div>
+        <div class="text-md-end mt-2">Thực hiện: <%= data[0].name %></div>
     </div>
 </div>

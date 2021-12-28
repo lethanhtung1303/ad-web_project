@@ -25,7 +25,7 @@ function loadListAnnounces() {
                                     <div class="myNotify__detail">
                                         <div class="col"></div>
                                         <a
-                                            href="/getAnnounce/getAnnounce"
+                                            href="/notifyDetail?idAnnounce=${val.idNotify}"
                                             class="myNotify__detail__link"
                                             >Xem chi tiết</a
                                         >
@@ -66,7 +66,7 @@ function loadListNotifysById(idNotify) {
                                         <div class="myNotify__detail">
                                             <div class="col"></div>
                                             <a
-                                                href="/getAnnounce/getAnnounce"
+                                                href="/notifyDetail?idAnnounce=${val.idNotify}"
                                                 class="myNotify__detail__link"
                                                 >Xem chi tiết</a
                                             >
