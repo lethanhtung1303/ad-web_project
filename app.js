@@ -29,8 +29,8 @@ var notifyDetailRouter = require('./routes/notifyDetail');
 var logoutRouter = require('./routes/logout');
 var loginRouter = require('./routes/login');
 var loginGGRouter = require('./routes/loginGG');
-var getAnnounceByAuths = require('./routes/getAnnounceByAuths')
-var getListMyAnnounce = require('./routes/getListMyAnnounce')
+var getAnnounceByAuths = require('./routes/getAnnounceByAuths');
+var getListMyAnnounce = require('./routes/getListMyAnnounce');
 
 var app = express();
 //socket
@@ -82,8 +82,8 @@ app.use('/notifyDetail', notifyDetailRouter);
 app.use('/logout', logoutRouter);
 app.use('/login', loginRouter);
 app.use('/loginGG', loginGGRouter);
-app.use('/getAnnounceByAuths', getAnnounceByAuths)
-app.use('/getListMyAnnounce', getListMyAnnounce)
+app.use('/getAnnounceByAuths', getAnnounceByAuths);
+app.use('/getListMyAnnounce', getListMyAnnounce);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
