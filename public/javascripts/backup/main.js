@@ -83,36 +83,39 @@ btnNotify.addEventListener('click', () => {
         })
             .then((res) => res.json())
             .then((json) => {
-                console.log(json.data)
+                console.log(json.data);
                 if (json.code === 0) {
                     document.getElementById('contentNotify').value = '';
                     document.getElementById('tittle').value = '';
-                    console.log(json.data)
-                    loadListNotifysById(json.data.idNotify)
-                    msg = json.data.name + " vừa đăng thông báo " + "<a href='/NotifyDetail?idNotify="+json.data.idNotify+"'>XEM</a>"
-                    socket.emit("client_Send_Data", msg)
+                    console.log(json.data);
+                    loadListNotifysById(json.data.idNotify);
+                    msg =
+                        json.data.name +
+                        ' vừa đăng thông báo ' +
+                        "<a href='/NotifyDetail?idNotify=" +
+                        json.data.idNotify +
+                        "'>XEM</a>";
+                    socket.emit('client_Send_Data', msg);
                 }
             })
             .catch((e) => console.log(e));
     }
 });
 
-
-loadListAnnounces()
-    function loadListAnnounces(){
-        document.getElementById('announces').innerHTML = ''
-        setTimeout(()=>{
-            fetch("/getAnnounce/getAnnounce")
-            .then(res => res.json())
-            .then(json => {
-                var data = json.data.reverse()
-                a = data
-                var div = document.getElementById('announces')
+loadListAnnounces();
+function loadListAnnounces() {
+    document.getElementById('announces').innerHTML = '';
+    setTimeout(() => {
+        fetch('/getAnnounce/getAnnounce')
+            .then((res) => res.json())
+            .then((json) => {
+                var data = json.data.reverse();
+                a = data;
+                var div = document.getElementById('announces');
                 data.forEach((val, i) => {
-                    if(i >= 10)
-                        return
+                    if (i >= 10) return;
 
-                    var notify = document.createElement("div")
+                    var notify = document.createElement('div');
                     notify.innerHTML = `<div class="myNotify">
                                 <div class="mainNotify__container">
                                     <div class="myNotify__container__header">
@@ -132,37 +135,28 @@ loadListAnnounces()
                                         >
                                     </div>
                                 </div>
-                            </div>`
-                    
-                    
-                   
-                    
-                    div.appendChild(notify)
-                })
+                            </div>`;
 
-                
+                    div.appendChild(notify);
+                });
             })
-            .catch(e => console.log(e))
+            .catch((e) => console.log(e));
+    }, 500);
+}
 
-        },500)
-    }
-
-
-    function loadListNotifysById(idNotify){
-        setTimeout(()=>{
-            fetch("/getAnnounce/getAnnounce")
-            .then(res => res.json())
-            .then(json => {
-                var data = json.data.reverse()
-                a = data
-                var div = document.getElementById('announces')
+function loadListNotifysById(idNotify) {
+    setTimeout(() => {
+        fetch('/getAnnounce/getAnnounce')
+            .then((res) => res.json())
+            .then((json) => {
+                var data = json.data.reverse();
+                a = data;
+                var div = document.getElementById('announces');
                 data.forEach((val, i) => {
-                    if(i >= 10)
-                        return
-                    
+                    if (i >= 10) return;
+
                     if (val.idNotify === idNotify) {
-                        
-                        var notify = document.createElement("div")
+                        var notify = document.createElement('div');
                         notify.innerHTML = `<div class="myNotify">
                                     <div class="mainNotify__container">
                                         <div class="myNotify__container__header">
@@ -182,20 +176,12 @@ loadListAnnounces()
                                             >
                                         </div>
                                     </div>
-                                </div>`
-                        
-                        div.prepend(notify)
+                                </div>`;
 
-                       
-                    }    
-                })
-    
-                    
-                
+                        div.prepend(notify);
+                    }
+                });
             })
-            .catch(e => console.log(e))
-
-        },500)
-    }
-
-        
+            .catch((e) => console.log(e));
+    }, 500);
+}

@@ -84,14 +84,19 @@ btnNotify.addEventListener('click', () => {
         })
             .then((res) => res.json())
             .then((json) => {
-                console.log(json.data)
+                console.log(json.data);
                 if (json.code === 0) {
                     document.getElementById('contentNotify').value = '';
                     document.getElementById('tittle').value = '';
-                    console.log(json.data)
-                    loadListNotifysById(json.data.idNotify)
-                    msg = json.data.name + " vừa đăng thông báo " + "<a href='/NotifyDetail?idNotify="+json.data.idNotify+"'>XEM</a>"
-                    socket.emit("client_Send_Data", msg)
+                    console.log(json.data);
+                    loadListNotifysById(json.data.idNotify);
+                    msg =
+                        json.data.name +
+                        ' vừa đăng thông báo ' +
+                        "<a href='/NotifyDetail?idNotify=" +
+                        json.data.idNotify +
+                        "'>XEM</a>";
+                    socket.emit('client_Send_Data', msg);
                 }
             })
             .catch((e) => console.log(e));

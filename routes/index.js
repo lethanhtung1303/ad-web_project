@@ -9,8 +9,6 @@ router.get('/', function (req, res, next) {
     return res.render('layouts/main', { profile, content });
 });
 
-
-
 // router.post('/addAnnouce', (req, res) => {
 //     console.log("sadasd")
 //     return res.redirect('/?post=success');
@@ -29,10 +27,10 @@ router.get('/', function (req, res, next) {
 //         .then(data => {
 //             if(data.length)
 //                 return res.json({'code': 3, 'message': 'id post exist, please try again'})
-            
+
 //             var date = new Date();
 //             var dateTime = date.getFullYear().toString() +"-"+ (date.getMonth()+1).toString() +"-"+ date.getDate().toString()
-            
+
 //             var newAnnounce = new notify({
 //                 idAnnounce : idAnnounce,
 //                 idUser : profile.idUser,

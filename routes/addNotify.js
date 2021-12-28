@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
                 auths: parseInt(auths),
             });
             newAnnounce.save();
-            return res.json({'code': 0, 'data': newAnnounce})
+            return res.json({ code: 0, data: newAnnounce });
         })
         .catch((err) => console.log(err));
     /*return res.redirect('/');*/

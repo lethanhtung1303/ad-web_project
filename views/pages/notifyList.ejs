@@ -1,8 +1,6 @@
-
 <h2 class="text-center">Danh sách thông báo</h2>
 <div>
-    <ul class="pagination" id="pagination">
-    </ul>
+    <ul class="pagination" id="pagination"></ul>
 </div>
 
 <!-- <h3 class="text-center">Thông báo của tôi</h3>
@@ -16,12 +14,10 @@
 
 <div class="container" id="allAnnou"></div>
 <% if(profile.position===0){%>
-    <script src="/javascripts/listAnnouncesAdm.js"></script>
-    <% }else{ %>
-        <script src="/javascripts/listAnnounces.js"></script>
-        <% } %>
-
-
+<script src="/javascripts/listAnnouncesAdm.js"></script>
+<% }else{ %>
+<script src="/javascripts/listAnnounces.js"></script>
+<% } %>
 
 <!-- <h3 class="text-center">Danh sách thông báo</h3>
 <nav aria-label="Page navigation example">
@@ -31,7 +27,6 @@
         <li class="page-item"><a class="page-link" href="#">3</a></li>
     </ul>
 </nav> -->
-
 
 <!-- myNotify
 <div class="myNotify" id="Notifylist">
@@ -88,11 +83,16 @@
             <form action="/editNotify/editNotify" method="Post">
                 <div class="container">
                     <input type="hidden" name="idNotify" id="idNotify" />
-                    <input type="hidden" id="page_MD">
+                    <input type="hidden" id="page_MD" />
                     <div class="form-group">
                         <label for="content">Tiêu đề:</label>
-                        <textarea class="form-control" rows="1" id="tittle_MD" placeholder="Viết."
-                            name="text"></textarea>
+                        <textarea
+                            class="form-control"
+                            rows="1"
+                            id="tittle_MD"
+                            placeholder="Viết."
+                            name="text"
+                        ></textarea>
                     </div>
 
                     <div class="form-group">
@@ -132,56 +132,50 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
+    var idNotify = '';
+    var tittle = '';
+    var content = '';
 
-        var idNotify = ""
-        var tittle = ""
-        var content = ""
+    function showEditAnnouMD(idNotify, tittle, content, number) {
+        document.getElementById('idNotify').value = idNotify;
+        document.getElementById('page_MD').value = number;
+        document.getElementById('tittle_MD').value = tittle;
+        document.getElementById('contentPost_MD').value = content;
 
-        function showEditAnnouMD(idNotify, tittle, content, number) {
-            document.getElementById("idNotify").value = idNotify
-            document.getElementById("page_MD").value = number
-            document.getElementById('tittle_MD').value = tittle
-            document.getElementById('contentPost_MD').value = content
+        idNotify = idNotify;
+        tittle = tittle;
+        content = content;
+    }
 
+    var btnEditAnnounce = document.getElementById('btnEditPost');
 
-            idNotify = idNotify
-            tittle = tittle
-            content = content
-        }
+    btnEditAnnounce.addEventListener('click', () => {
+        var idNotify = document.getElementById('idNotify').value;
+        var page_MD = document.getElementById('page_MD').value;
+        var tittle = document.getElementById('tittle_MD').value;
+        var content = document.getElementById('contentPost_MD').value;
 
-        var btnEditAnnounce = document.getElementById("btnEditPost")
-
-        btnEditAnnounce.addEventListener('click', () => {
-
-            var idNotify = document.getElementById("idNotify").value
-            var page_MD = document.getElementById("page_MD").value
-            var tittle = document.getElementById('tittle_MD').value
-            var content = document.getElementById('contentPost_MD').value
-
-            if (idNotify && tittle && content) {
-                fetch("/editNotify/editNotify", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        idNotify: idNotify,
-                        tittle: tittle,
-                        content: content
-                    })
+        if (idNotify && tittle && content) {
+            fetch('/editNotify/editNotify', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    idNotify: idNotify,
+                    tittle: tittle,
+                    content: content,
+                }),
+            })
+                .then((res) => res.json())
+                .then((json) => {
+                    if (json.code === 0) {
+                        choosePage(parseInt(page_MD));
+                        // msg = "Thông báo vừa được chỉnh sửa " + "<a href='/announceDetail?idNotify=" + idNotify + "'>XEM</a>"
+                        // socket.emit("client_Send_Data", msg)
+                    } else alert(json.message);
                 })
-                    .then(res => res.json())
-                    .then(json => {
-                        if (json.code === 0) {
-                            choosePage(parseInt(page_MD))
-                            // msg = "Thông báo vừa được chỉnh sửa " + "<a href='/announceDetail?idNotify=" + idNotify + "'>XEM</a>"
-                            // socket.emit("client_Send_Data", msg)
-                        }
-                        else
-                            alert(json.message)
-                    })
-                    .catch(err => console.log(err))
-            }
-        })
-
+                .catch((err) => console.log(err));
+        }
+    });
 </script>
