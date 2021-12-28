@@ -295,12 +295,12 @@ a.homepage__post-posts--content--1cmt-namen:hover {
 }
 
 .homepage__post-posts--content {
-    padding: 80px 18px;
+    padding: 40px 18px;
     margin: 12px 0;
     background-color: rgb(122, 192, 218);
-    text-align: center;
+    text-align: left;
     /* border-radius: 12px; */
-    font-size: 36px;
+    font-size: 26px;
     font-weight: 400;
     overflow-wrap: break-word;
 }
@@ -515,4 +515,64 @@ a.homepage__post-posts--content--1cmt-namen:hover {
 
 .mypostpage:first-child {
     margin-top: -12px;
+}
+
+/* list Announces */
+.btnPagination {
+    background-color: rgba(223, 213, 213, 0.856);
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px rgba(7, 7, 7, 0);
+}
+.btnPagination:hover {
+    background-color: rgba(28, 162, 240, 0.795);
+    color: #ffffff;
+}
+.btnPagination:focus {
+    background-color: rgba(0, 0, 255, 0.514);
+    color: #ffffff;
+}
+.pagination-ele {
+    margin: 1px;
+}
+.annou {
+    background-color: rgba(7, 7, 7, 0.281);
+    width: 70%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 10px;
+}
+.annou-tittle {
+    width: 50%;
+    float: left;
+}
+.annou-time {
+    text-align: right;
+    width: 50%;
+    float: right;
+}
+.click {
+    margin-top: 50px;
+    display: block;
+}
+#editFormAnnounce {
+    margin: auto;
+    width: 95%;
+}
+/* announces detail */
+#AnnouDetail {
+    background-color: rgba(128, 128, 128, 0.26);
+    width: 90%;
+    padding: 20px;
+    border-radius: 20px;
+}
+#contentAnnou {
+    word-break: keep-all;
+    font-family: 'Courier New', Courier, monospace;
+}
+#info-add {
+    font-style: italic;
 }

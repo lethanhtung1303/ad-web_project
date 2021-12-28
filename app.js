@@ -10,8 +10,12 @@ const db = require('./config/db');
 
 var indexRouter = require('./routes/index');
 var adminRouter = require('./routes/admin');
+var postRouter = require('./routes/post');
 var myPostRouter = require('./routes/myPost');
+var getAnnounce = require('./routes/getAnnounce');
 var addNotifyRouter = require('./routes/addNotify');
+var editNotifyRouter = require('./routes/editNotify');
+var deleteNotifyRouter = require('./routes/deleteNotify');
 var myNotifyRouter = require('./routes/myNotify');
 var notifyListRouter = require('./routes/notifyList');
 var notifyListTopicRouter = require('./routes/notifyListTopic');
@@ -27,6 +31,14 @@ var loginRouter = require('./routes/login');
 var loginGGRouter = require('./routes/loginGG');
 
 var app = express();
+//socket
+// const server = require('http').createServer(app);
+// const io = require('socket.io')(server);
+// io.on('connection', socket => {
+//     socket.on("client_Send_Data", data => {
+//         io.sockets.emit("server_Return_Data", data)
+//     })
+// })
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,6 +48,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
@@ -48,8 +61,12 @@ app.use(
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+app.use('/post', postRouter);
 app.use('/myPost', myPostRouter);
 app.use('/addNotify', addNotifyRouter);
+app.use('/editNotify', editNotifyRouter);
+app.use('/deleteNotify', deleteNotifyRouter);
+app.use('/getAnnounce', getAnnounce);
 app.use('/myNotify', myNotifyRouter);
 app.use('/notifyList', notifyListRouter);
 app.use('/notifyListTopic', notifyListTopicRouter);
