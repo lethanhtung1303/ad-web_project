@@ -1,17 +1,18 @@
-loadListAnnounces();
-function loadListAnnounces() {
-    document.getElementById('announces').innerHTML = '';
-    setTimeout(() => {
-        fetch('/getAnnounce/getAnnounce')
-            .then((res) => res.json())
-            .then((json) => {
-                var data = json.data.reverse();
-                a = data;
-                var div = document.getElementById('announces');
+loadListAnnounces()
+    function loadListAnnounces(){
+        document.getElementById('announces').innerHTML = ''
+        setTimeout(()=>{
+            fetch("/getAnnounce/getAnnounce")
+            .then(res => res.json())
+            .then(json => {
+                var data = json.data.reverse()
+                a = data
+                var div = document.getElementById('announces')
                 data.forEach((val, i) => {
-                    if (i >= 10) return;
+                    if(i >= 10)
+                        return
 
-                    var notify = document.createElement('div');
+                    var notify = document.createElement("div")
                     notify.innerHTML = `<div class="myNotify">
                                 <div class="mainNotify__container">
                                     <div class="myNotify__container__header">
@@ -25,34 +26,43 @@ function loadListAnnounces() {
                                     <div class="myNotify__detail">
                                         <div class="col"></div>
                                         <a
-                                            href="/getAnnounce/getAnnounce"
+                                            href="/notifyDetail?idAnnounce=${val.idNotify}"
                                             class="myNotify__detail__link"
                                             >Xem chi tiết</a
                                         >
                                     </div>
                                 </div>
-                            </div>`;
+                            </div>`
+                    
+                    
+                   
+                    
+                    div.appendChild(notify)
+                })
 
-                    div.appendChild(notify);
-                });
+                
             })
-            .catch((e) => console.log(e));
-    }, 500);
-}
+            .catch(e => console.log(e))
 
-function loadListNotifysById(idNotify) {
-    setTimeout(() => {
-        fetch('/getAnnounce/getAnnounce')
-            .then((res) => res.json())
-            .then((json) => {
-                var data = json.data.reverse();
-                a = data;
-                var div = document.getElementById('announces');
+        },500)
+    }
+
+
+    function loadListNotifysById(idNotify){
+        setTimeout(()=>{
+            fetch("/getAnnounce/getAnnounce")
+            .then(res => res.json())
+            .then(json => {
+                var data = json.data.reverse()
+                a = data
+                var div = document.getElementById('announces')
                 data.forEach((val, i) => {
-                    if (i >= 10) return;
-
+                    if(i >= 10)
+                        return
+                    
                     if (val.idNotify === idNotify) {
-                        var notify = document.createElement('div');
+                        
+                        var notify = document.createElement("div")
                         notify.innerHTML = `<div class="myNotify">
                                     <div class="mainNotify__container">
                                         <div class="myNotify__container__header">
@@ -66,18 +76,26 @@ function loadListNotifysById(idNotify) {
                                         <div class="myNotify__detail">
                                             <div class="col"></div>
                                             <a
-                                                href="/getAnnounce/getAnnounce"
+                                                href="/notifyDetail?idAnnounce=${val.idNotify}"
                                                 class="myNotify__detail__link"
                                                 >Xem chi tiết</a
                                             >
                                         </div>
                                     </div>
-                                </div>`;
+                                </div>`
+                        
+                        div.prepend(notify)
 
-                        div.prepend(notify);
-                    }
-                });
+                       
+                    }    
+                })
+    
+                    
+                
             })
-            .catch((e) => console.log(e));
-    }, 500);
-}
+            .catch(e => console.log(e))
+
+        },500)
+    }
+
+    
