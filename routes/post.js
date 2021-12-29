@@ -5,6 +5,7 @@ var dateFormat = require('dateformat');
 
 const posts = require('../models/posts');
 
+// Trả về tất cả bài viết
 router.get('/', (req, res) => {
     if (!req.session.profile)
         return res.json({ code: 2, message: 'please login' });
@@ -22,6 +23,7 @@ router.get('/me', function (req, res, next) {
     return res.render('layouts/main', { profile, content });
 });
 
+// tạo mới 1 bài viết
 router.post('/', (req, res) => {
     if (!req.session.profile)
         return res.json({ code: 2, message: 'please login' });

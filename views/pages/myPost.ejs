@@ -1,4 +1,4 @@
-<div class="homepage__post">
+<div class="homepage__post" id="postArea">
     <div class="homepage__post-posts">
         <div class="homepage__post-posts--header">
             <div class="homepage__post-posts--header-avt">
@@ -9,7 +9,9 @@
                 />
             </div>
             <div class="homepage__post-posts--header-nametime">
-                <a class="homepage__post-posts--header-name" href="/auth/profile"
+                <a
+                    class="homepage__post-posts--header-name"
+                    href="/auth/profile"
                     >Thiện Vsoul</a
                 >
                 <div class="homepage__post-posts--header-time">
@@ -164,6 +166,67 @@
                     />
                 </button>
             </div>
+        </div>
+    </div>
+</div>
+<!-- modal edit post -->
+<div class="modal" id="modalEditPost">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Chỉnh sửa bài viết</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+            </div>
+
+            <!-- Modal body -->
+            <form action="/">
+                <div class="container">
+                    <input type="hidden" name="idPost" id="idPost_MD" />
+                    <div class="form-group">
+                        <label for="content">Nội dung:</label>
+                        <textarea
+                            class="form-control"
+                            rows="5"
+                            id="contentPost_MD"
+                            placeholder="Viết thông báo tại đây..."
+                            name="text"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="content">link:</label>
+                        <textarea
+                            class="form-control"
+                            rows="5"
+                            id="linkPost_MD"
+                            placeholder="Viết thông báo tại đây..."
+                            name="text"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        id="btnEditPost"
+                        class="btn btn-primary"
+                        data-dismiss="modal"
+                    >
+                        Chỉnh sửa
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-danger"
+                        data-dismiss="modal"
+                    >
+                        Đóng
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
