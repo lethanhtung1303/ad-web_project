@@ -124,4 +124,79 @@ router.post('/edit', (req, res) => {
     }
 });
 
+router.post('/comment', (req, res)=>{
+    if(!req.session.profile)
+        return res.json({'code': 2, 'message': 'please login'})
+
+    var {idPost, contentCmt} = req.body
+    var profile = req.session.profile
+    if(idPost && contentCmt){
+        posts.find({"idPost": idPost}).exec()
+        .then(data => {         
+            if(!data.length)
+                return res.json({'code': 3, 'message': 'id not exist'})
+        
+            var idcmt = "Cmt" + String(Math.floor(Math.random() * (999999 - 100000)) + 100000)    
+            var date = new Date();
+            var dateTime = date.getFullYear().toString() +"-"+ (date.getMonth()+1).toString() +"-"+ date.getDate().toString()    
+            var comment = data[0].comment
+            var newCmt = {
+                    idcmt : idcmt,
+                    idUser : profile.idUser,
+                    name : profile.name,
+                    picture : profile.picture,
+                    contentCmt : contentCmt,
+                    dateTime : dateTime
+                }
+            comment.push(newCmt)
+
+            posts.updateOne({"idPost": idPost}, {"$set":{"comment" : comment}}).exec()
+
+            return res.json({'code': 0, 'data': newCmt})
+        })
+    }
+    
+
+})
+
+router.get('/getComment/:idPost', (req, res)=>{
+    if(!req.session.profile)
+        return res.json({'code': 2, 'message': 'please login'})
+    var idPost = req.params.idPost
+    if(!idPost)
+        return res.json({'code': 3, 'message': 'not params'})
+
+    posts.find({"idPost":idPost}).exec()
+        .then(data => {     
+            var comment = data[0].comment    
+            return res.json({'code': 0, 'data': comment})
+        })
+})
+
+// router.get('/postsByIdUser', (req, res)=>{
+//     if(!req.session.profile)
+//         return res.json({'code': 2, 'message': 'please login'})
+
+//     if(!req.query.idUser)
+//         return res.redirect('/')
+
+//     var profile = req.session.profile
+
+//     var content = '../pages/specificUsersPosts'
+//     return res.render('layouts/main', {profile, content})
+// })
+
+// router.get('/getPostsByIdUser', (req, res)=>{
+//     if(!req.session.profile)
+//         return res.json({'code': 2, 'message': 'please login'})
+//     if(!req.query.idUser)
+//         return res.json({'code': 4, 'message': 'not params'})
+//     var idUser = req.query.idUser    
+//     posts.find({"idUser" : idUser}).exec()
+//         .then(data => {         
+//             return res.json({'code': 0, 'data': data})
+//         })
+
+// })
+
 module.exports = router;
