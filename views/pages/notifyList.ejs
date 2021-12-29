@@ -80,7 +80,7 @@
             </div>
 
             <!-- Modal body -->
-            <form action="/editNotify/editNotify" method="Post">
+            <form action="/notify/edit" method="Post">
                 <div class="container">
                     <input type="hidden" name="idNotify" id="idNotify" />
                     <input type="hidden" id="page_MD" />
@@ -156,7 +156,7 @@
         var content = document.getElementById('contentPost_MD').value;
 
         if (idNotify && tittle && content) {
-            fetch('/editNotify/editNotify', {
+            fetch('/notify/edit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

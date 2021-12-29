@@ -16,6 +16,12 @@ router.get('/', (req, res) => {
         });
 });
 
+router.get('/me', function (req, res, next) {
+    var profile = req.session.profile;
+    var content = '../pages/myPost';
+    return res.render('layouts/main', { profile, content });
+});
+
 router.post('/', (req, res) => {
     if (!req.session.profile)
         return res.json({ code: 2, message: 'please login' });

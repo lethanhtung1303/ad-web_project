@@ -2,7 +2,7 @@ loadListAnnounces();
 function loadListAnnounces() {
     document.getElementById('announces').innerHTML = '';
     setTimeout(() => {
-        fetch('/getAnnounce/getAnnounce')
+        fetch('/api/notify')
             .then((res) => res.json())
             .then((json) => {
                 var data = json.data.reverse();
@@ -25,7 +25,7 @@ function loadListAnnounces() {
                                     <div class="myNotify__detail">
                                         <div class="col"></div>
                                         <a
-                                            href="/notifyDetail?idAnnounce=${val.idNotify}"
+                                            href="/notify/detail?idAnnounce=${val.idNotify}"
                                             class="myNotify__detail__link"
                                             >Xem chi tiết</a
                                         >
@@ -42,7 +42,7 @@ function loadListAnnounces() {
 
 function loadListNotifysById(idNotify) {
     setTimeout(() => {
-        fetch('/getAnnounce/getAnnounce')
+        fetch('/api/notify')
             .then((res) => res.json())
             .then((json) => {
                 var data = json.data.reverse();
@@ -66,7 +66,7 @@ function loadListNotifysById(idNotify) {
                                         <div class="myNotify__detail">
                                             <div class="col"></div>
                                             <a
-                                                href="/notifyDetail?idAnnounce=${val.idNotify}"
+                                                href="/notify/detail?idAnnounce=${val.idNotify}"
                                                 class="myNotify__detail__link"
                                                 >Xem chi tiết</a
                                             >

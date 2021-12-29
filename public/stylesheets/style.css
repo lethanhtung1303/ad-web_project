@@ -466,6 +466,7 @@ a.homepage__post-posts--content--1cmt-namen:hover {
 }
 
 .myNotify__title {
+    text-align: left;
     font-weight: 600;
 }
 

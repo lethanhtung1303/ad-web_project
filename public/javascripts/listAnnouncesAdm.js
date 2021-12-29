@@ -4,7 +4,7 @@ function loadListAnnounces(number) {
     document.getElementById('allAnnou').innerHTML = '';
     var min = (number - 1) * 10;
     var max = number * 10;
-    fetch('/getAnnounce/getAnnounce')
+    fetch('/api/notify')
         .then((res) => res.json())
         .then((json) => {
             var data = json.data.reverse();
@@ -57,7 +57,7 @@ function loadListAnnounces(number) {
                                 </div>
                                 <div class="myNotify__detail">
                                     <div class="col"></div>
-                                    <a href="/notifyDetail" class="myNotify__detail__link"
+                                    <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
                                         >Xem chi tiết</a
                                     >
                                 </div>
@@ -95,7 +95,7 @@ function loadListAnnounces2(number) {
     document.getElementById('allAnnou').innerHTML = '';
     var min = (number - 1) * 10;
     var max = number * 10;
-    fetch('/getAnnounce/getAnnounce')
+    fetch('/api/notify')
         .then((res) => res.json())
         .then((json) => {
             var data = json.data.reverse();
@@ -145,7 +145,7 @@ function loadListAnnounces2(number) {
                                 </div>
                                 <div class="myNotify__detail">
                                     <div class="col"></div>
-                                    <a href="/notifyDetail" class="myNotify__detail__link"
+                                    <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
                                         >Xem chi tiết</a
                                     >
                                 </div>
@@ -194,7 +194,7 @@ function choosePage(number) {
 }
 
 function deleteAnnounce(idNotify) {
-    fetch('/deleteNotify/deleteAnnounceAdm', {
+    fetch('/notify/deleteByAd', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

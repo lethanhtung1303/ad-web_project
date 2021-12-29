@@ -70,7 +70,7 @@ btnNotify.addEventListener('click', () => {
     var tittle = document.getElementById('tittle').value;
 
     if (contentNotify && auths && tittle) {
-        fetch('/addNotify', {
+        fetch('/notify', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ btnNotify.addEventListener('click', () => {
                     msg =
                         json.data.name +
                         ' vừa đăng thông báo ' +
-                        "<a href='/NotifyDetail?idNotify=" +
+                        "<a href='/notify/detail?idAnnounce=" +
                         json.data.idNotify +
                         "'>XEM</a>";
                     socket.emit('client_Send_Data', msg);
@@ -106,7 +106,7 @@ loadListAnnounces();
 function loadListAnnounces() {
     document.getElementById('announces').innerHTML = '';
     setTimeout(() => {
-        fetch('/getAnnounce/getAnnounce')
+        fetch('/api/notify')
             .then((res) => res.json())
             .then((json) => {
                 var data = json.data.reverse();
@@ -129,7 +129,7 @@ function loadListAnnounces() {
                                     <div class="myNotify__detail">
                                         <div class="col"></div>
                                         <a
-                                            href="/getAnnounce/getAnnounce"
+                                            href="/api/notify"
                                             class="myNotify__detail__link"
                                             >Xem chi tiết</a
                                         >
@@ -146,7 +146,7 @@ function loadListAnnounces() {
 
 function loadListNotifysById(idNotify) {
     setTimeout(() => {
-        fetch('/getAnnounce/getAnnounce')
+        fetch('/api/notify')
             .then((res) => res.json())
             .then((json) => {
                 var data = json.data.reverse();
@@ -170,7 +170,7 @@ function loadListNotifysById(idNotify) {
                                         <div class="myNotify__detail">
                                             <div class="col"></div>
                                             <a
-                                                href="/getAnnounce/getAnnounce"
+                                                href="/api/notify"
                                                 class="myNotify__detail__link"
                                                 >Xem chi tiết</a
                                             >

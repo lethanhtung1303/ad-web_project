@@ -1,13 +1,34 @@
-/* GET users listing. */
 var express = require('express');
+var router = express.Router();
+
 const multer = require('multer');
 const upload = multer({ dest: './public/images' });
 const fs = require('fs');
 const users = require('../models/users');
 const bcrypt = require('bcrypt');
-var router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/list', function (req, res, next) {
+    if (!req.session.profile) return res.redirect('/login');
+
+    var profile = req.session.profile;
+
+    if (profile.position !== 0) return res.redirect('/login');
+
+    var content = '../pages/deptList';
+
+    users
+        .find({ position: 2 })
+        .exec()
+        .then((data) => {
+            // if(req.query.mess)
+            //     mess = req.query.mess
+            var mess = req.query.mess || '';
+            return res.render('layouts/main', { profile, mess, content, data });
+        })
+        .catch((e) => console.log(e));
+});
+
+router.get('/add', (req, res) => {
     if (!req.session.profile) return res.redirect('/login');
 
     var profile = req.session.profile;
@@ -77,14 +98,15 @@ router.get('/', (req, res) => {
     return res.render('layouts/main', { profile, content, mess, listAuths });
 });
 
-router.post('/', upload.single('picture'), (req, res) => {
+router.post('/add', upload.single('picture'), (req, res) => {
     if (!req.session.profile) return res.redirect('/login');
 
     var profile = req.session.profile;
 
     if (profile.position !== 0) return res.redirect('/login');
 
-    var { idUser, name, email } = req.body;
+    var { name, email } = req.body;
+    var idUser = email.split('@')[0];
 
     var {
         CTHSSV,
@@ -147,7 +169,7 @@ router.post('/', upload.single('picture'), (req, res) => {
             .find({ idUser: idUser })
             .exec()
             .then((data) => {
-                if (data.length) return res.redirect('/addDept?mess=Add Fail');
+                if (data.length) return res.redirect('/dept/add?mess=Add Fail');
 
                 var NewUsers = new users({
                     idUser: idUser,
@@ -161,11 +183,11 @@ router.post('/', upload.single('picture'), (req, res) => {
 
                 NewUsers.save();
 
-                return res.redirect('/deptList?mess=Add Success');
+                return res.redirect('/dept/list?mess=Add Success');
             })
             .catch((e) => console.log(e));
     } else {
-        return res.redirect('/addDept?mess=Add Fail');
+        return res.redirect('/dept/add?mess=Add Fail');
     }
 });
 

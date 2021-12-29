@@ -25,7 +25,7 @@ function onSignIn(googleUser) {
 
     console.log(id_token);
 
-    fetch('/loginGG', {
+    fetch('/login/google', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ btnNotify.addEventListener('click', () => {
     var tittle = document.getElementById('tittle').value;
 
     if (contentNotify && auths && tittle) {
-        fetch('/addNotify', {
+        fetch('/notify', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ btnNotify.addEventListener('click', () => {
                     msg =
                         json.data.name +
                         ' vừa đăng thông báo ' +
-                        "<a href='/NotifyDetail?idNotify=" +
+                        "<a href='/notify/detail?idAnnounce=" +
                         json.data.idNotify +
                         "'>XEM</a>";
                     socket.emit('client_Send_Data', msg);
@@ -189,7 +189,7 @@ function load() {
                     'class',
                     'homepage__post-posts--header-name',
                 );
-                a_headerName.setAttribute('href', '/profile');
+                a_headerName.setAttribute('href', '/auth/profile');
                 div_headerTime.setAttribute(
                     'class',
                     'homepage__post-posts--header-time',
@@ -274,11 +274,19 @@ function load() {
                     `;
 
                 if (val.link) {
+                    var video_id = val.link.split('v=')[1];
+                    var ampersandPosition = video_id.indexOf('&');
+                    if (ampersandPosition != -1) {
+                        video_id = video_id.substring(0, ampersandPosition);
+                    }
                     var div = document.createElement('div');
                     div.innerHTML = val.content;
 
                     var embed = document.createElement('embed');
-                    embed.setAttribute('src', val.link);
+                    embed.setAttribute(
+                        'src',
+                        `https://www.youtube.com/embed/${video_id}`,
+                    );
                     embed.setAttribute('height', '300px');
                     embed.setAttribute('width', '100%');
                     embed.setAttribute('class', 'text-center');
@@ -370,7 +378,7 @@ function loadPostById(idPost) {
                             'class',
                             'homepage__post-posts--header-name',
                         );
-                        a_headerName.setAttribute('href', '/profile');
+                        a_headerName.setAttribute('href', '/auth/profile');
                         div_headerTime.setAttribute(
                             'class',
                             'homepage__post-posts--header-time',

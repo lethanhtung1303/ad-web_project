@@ -6,7 +6,7 @@ function loadListAnnounces(number) {
     var auths = url.searchParams.get('auths');
     var min = (number - 1) * 10;
     var max = number * 10;
-    fetch('/getAnnounceByAuths?auths=' + auths)
+    fetch('/api/notify-by-auths?auths=' + auths)
         .then((res) => res.json())
         .then((json) => {
             var data = json.data.reverse();
@@ -24,7 +24,7 @@ function loadListAnnounces(number) {
                     </div>
                     <div class="myNotify__detail">
                         <div class="col"></div>
-                        <a href="/notifyDetail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                        <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
                             >Xem chi tiết</a
                         >
                     </div>
@@ -66,7 +66,7 @@ function loadListAnnounces2(number) {
     var max = number * 10;
     var url = new URL(window.location);
     var auths = url.searchParams.get('auths');
-    fetch('/getAnnounceByAuths?auths=' + auths)
+    fetch('/api/notify-by-auths?auths=' + auths)
         .then((res) => res.json())
         .then((json) => {
             var data = json.data.reverse();
@@ -83,7 +83,7 @@ function loadListAnnounces2(number) {
                     </div>
                     <div class="myNotify__detail">
                         <div class="col"></div>
-                        <a href="/notifyDetail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                        <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
                             >Xem chi tiết</a
                         >
                     </div>
