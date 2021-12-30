@@ -98,14 +98,15 @@ router.post('/profile', (req, res) => {
 
     var profile = req.session.profile;
 
-    var { gender, classroom, faculty } = req.body;
+    var { myName, gender, classroom, faculty } = req.body;
 
-    if (gender && faculty && classroom) {
+    if (myName && gender && faculty && classroom) {
         users
             .updateOne(
                 { idUser: profile.idUser },
                 {
                     $set: {
+                        name: myName,
                         gender: gender,
                         faculty: faculty,
                         classroom: classroom,

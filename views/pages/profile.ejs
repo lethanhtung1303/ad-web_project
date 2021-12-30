@@ -29,14 +29,28 @@
 
     <div class="form-group">
         <label for="name">Tên:</label>
+        <% if(profile.position != 1){ %>
         <input
             type="text"
             class="form-control"
-            placeholder="Enter name"
-            id="name"
             value="<%= profile.name %>"
+            name="myName"
+            placeholder="Enter name"
+            id="myName"
+            required
             readonly=""
         />
+        <% } %> <% if(profile.position === 1){ %>
+        <input
+            type="text"
+            class="form-control"
+            value="<%= profile.name %>"
+            name="myName"
+            placeholder="Enter name"
+            id="myName"
+            required
+        />
+        <% } %>
     </div>
 
     <div class="form-group">
