@@ -470,6 +470,11 @@ a.homepage__post-posts--content--1cmt-namen:hover {
     font-weight: 600;
 }
 
+.myNotify__time {
+    text-align: left;
+    margin-left: 12px;
+}
+
 .myNotify__detail {
     display: flex;
     position: relative;
@@ -576,4 +581,32 @@ a.homepage__post-posts--content--1cmt-namen:hover {
 }
 #info-add {
     font-style: italic;
+}
+
+/* notify detail */
+
+h6.notify__detail--title {
+    text-align: center;
+}
+
+i.notify__detail--time {
+    display: block;
+    text-align: right;
+}
+
+.text-md-end.mt-2 {
+    text-align: right;
+}
+
+.notify__detail--content {
+    background-color: #ffffff;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+/* btn edit cmt */
+
+button#dropdownMenuButton {
+    background-color: transparent;
+    margin-top: -10px;
 }

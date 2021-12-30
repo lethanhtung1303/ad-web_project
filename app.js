@@ -14,6 +14,8 @@ var adminRouter = require('./routes/admin');
 
 var postRouter = require('./routes/post');
 
+var commentRouter = require('./routes/comment');
+
 var notifyRouter = require('./routes/notify');
 
 var apiRouter = require('./routes/api');
@@ -58,6 +60,8 @@ app.use('/', indexRouter);
 app.use('/admin', adminRouter);
 
 app.use('/post', postRouter);
+
+app.use('/comment', commentRouter);
 
 app.use('/notify', notifyRouter);
 
