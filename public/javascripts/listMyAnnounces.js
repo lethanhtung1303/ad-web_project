@@ -35,21 +35,21 @@ function loadListAnnounces(number) {
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" onclick="deleteAnnounce('` +
-                                    val.idNotify +
-                                    `')">Xóa thông báo</a>
+                        val.idNotify +
+                        `')">Xóa thông báo</a>
                                                         <a
                                                             class="dropdown-item"
                                                             data-toggle="modal"
                                                             data-target="#modalEditPost"
                                                             onclick="showEditAnnouMD('` +
-                                    val.idNotify +
-                                    `', '` +
-                                    val.tittle +
-                                    `', '` +
-                                    val.content +
-                                    `', ` +
-                                    number +
-                                    `)"
+                        val.idNotify +
+                        `', '` +
+                        val.tittle +
+                        `', '` +
+                        val.content +
+                        `', ` +
+                        number +
+                        `)"
                                                             >Chỉnh sửa</a
                                                         >
                                         </div>

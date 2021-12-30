@@ -12,8 +12,7 @@ function loadListAnnounces() {
                     if (i >= 10) return;
 
                     var notify = document.createElement('div');
-                    notify.innerHTML =
-                    `<div class="myNotify">
+                    notify.innerHTML = `<div class="myNotify">
                         <div class="mainNotify__container">
                             <div class="myNotify__container__header">
                                 <div
@@ -54,8 +53,7 @@ function loadListNotifysById(idNotify) {
 
                     if (val.idNotify === idNotify) {
                         var notify = document.createElement('div');
-                        notify.innerHTML =
-                        `<div class="myNotify">
+                        notify.innerHTML = `<div class="myNotify">
                             <div class="mainNotify__container">
                                 <div class="myNotify__container__header">
                                     <div
