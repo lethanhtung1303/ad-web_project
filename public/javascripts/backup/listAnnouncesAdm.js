@@ -16,7 +16,7 @@ function loadListAnnounces(number) {
                     notify.innerHTML =
                         `
 
-                            <div id="${val.idNotify}"class="myNotify__container">
+                            <div id="${val.idNotify}" class="myNotify__container">
                                 <div class="myNotify__container__header">
                                     <div class="myNotify__container__header__container">
                                         <div class="myNotify__title">${val.tittle}</div>

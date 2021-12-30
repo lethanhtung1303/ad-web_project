@@ -14,22 +14,23 @@ function loadListAnnounces(number) {
             var allAnnou = document.getElementById('notifyListbyCategory');
             data.forEach((val, i) => {
                 if (i >= min && i < max) {
-                    var a = `<div class="myNotify" id="${val.idNotify}>
-                <div class="myNotify__container">
-                    <div class="myNotify__container__header">
-                        <div class="myNotify__container__header__container">
-                            <div class="myNotify__title">${val.tittle}</div>
-                            <div class="myNotify__time">${val.dateTime}</div>
+                    var a = `
+                    <div class="myNotify" id="${val.idNotify}">
+                        <div class="myNotify__container">
+                            <div class="myNotify__container__header">
+                                <div class="myNotify__container__header__container">
+                                    <div class="myNotify__title">${val.tittle}</div>
+                                    <div class="myNotify__time">${val.dateTime}</div>
+                                </div>
+                            </div>
+                            <div class="myNotify__detail">
+                                <div class="col"></div>
+                                <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link">
+                                    Xem chi tiết
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="myNotify__detail">
-                        <div class="col"></div>
-                        <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
-                            >Xem chi tiết</a
-                        >
-                    </div>
-                </div>
-            </div>`;
+                    </div>`;
                     allAnnou.innerHTML += a;
                 }
             });
@@ -74,21 +75,21 @@ function loadListAnnounces2(number) {
             data.forEach((val, i) => {
                 if (i >= min && i < max) {
                     var a = `<div class="myNotify" id="${val.idNotify}">
-                <div class="myNotify__container">
-                    <div class="myNotify__container__header">
-                        <div class="myNotify__container__header__container">
-                            <div class="myNotify__title">${val.tittle}</div>
-                            <div class="myNotify__time">${val.dateTime}</div>
+                        <div class="myNotify__container">
+                            <div class="myNotify__container__header">
+                                <div class="myNotify__container__header__container">
+                                    <div class="myNotify__title">${val.tittle}</div>
+                                    <div class="myNotify__time">${val.dateTime}</div>
+                                </div>
+                            </div>
+                            <div class="myNotify__detail">
+                                <div class="col"></div>
+                                <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                                    >Xem chi tiết</a
+                                >
+                            </div>
                         </div>
-                    </div>
-                    <div class="myNotify__detail">
-                        <div class="col"></div>
-                        <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
-                            >Xem chi tiết</a
-                        >
-                    </div>
-                </div>
-            </div>`;
+                    </div>`;
                     allAnnou.innerHTML += a;
                 }
             });

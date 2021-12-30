@@ -15,33 +15,33 @@ function loadListAnnounces(number) {
             data.forEach((val, i) => {
                 if (i >= min && i < max) {
                     var a =
-                        `<div class="myNotify" id="${val.idNotify}>
-                <div class="myNotify__container">
-                    <div class="myNotify__container__header">
-                        <div class="myNotify__container__header__container">
-                            <div class="myNotify__title">${val.tittle}</div>
-                            <div class="myNotify__time">${val.dateTime}</div>
-                        </div>
-                        <div class="dropdown">
-                            <button
-                                class="btn myNotify__btn__dropdown"
-                                type="button"
-                                id="dropdownMenuButton"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                <i class="fas fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" onclick="deleteAnnounce('` +
+                        `<div class="myNotify" id="${val.idNotify}">
+                            <div class="myNotify__container">
+                                <div class="myNotify__container__header">
+                                    <div class="myNotify__container__header__container">
+                                        <div class="myNotify__title">${val.tittle}</div>
+                                        <div class="myNotify__time">${val.dateTime}</div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button
+                                            class="btn myNotify__btn__dropdown"
+                                            type="button"
+                                            id="dropdownMenuButton"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" onclick="deleteAnnounce('` +
                         val.idNotify +
                         `')">Xóa thông báo</a>
-                                <a
-                                    class="dropdown-item"
-                                    data-toggle="modal"
-                                    data-target="#modalEditPost"
-                                    onclick="showEditAnnouMD('` +
+                                            <a
+                                                class="dropdown-item"
+                                                data-toggle="modal"
+                                                data-target="#modalEditPost"
+                                                onclick="showEditAnnouMD('` +
                         val.idNotify +
                         `', '` +
                         val.tittle +
@@ -50,19 +50,19 @@ function loadListAnnounces(number) {
                         `', ` +
                         number +
                         `)"
-                                    >Chỉnh sửa</a
-                                >
+                                                >Chỉnh sửa</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="myNotify__detail">
+                                    <div class="col"></div>
+                                    <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                                        >Xem chi tiết</a
+                                    >
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="myNotify__detail">
-                        <div class="col"></div>
-                        <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
-                            >Xem chi tiết</a
-                        >
-                    </div>
-                </div>
-            </div>`;
+                        </div>`;
                     allAnnou.innerHTML += a;
                 }
             });
@@ -108,32 +108,32 @@ function loadListAnnounces2(number) {
                 if (i >= min && i < max) {
                     var a =
                         `<div class="myNotify" id="${val.idNotify}">
-                <div class="myNotify__container">
-                    <div class="myNotify__container__header">
-                        <div class="myNotify__container__header__container">
-                            <div class="myNotify__title">${val.tittle}</div>
-                            <div class="myNotify__time">${val.dateTime}</div>
-                        </div>
-                        <div class="dropdown">
-                            <button
-                                class="btn myNotify__btn__dropdown"
-                                type="button"
-                                id="dropdownMenuButton"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                <i class="fas fa-ellipsis-v"></i>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" onclick="deleteAnnounce('` +
+                            <div class="myNotify__container">
+                                <div class="myNotify__container__header">
+                                    <div class="myNotify__container__header__container">
+                                        <div class="myNotify__title">${val.tittle}</div>
+                                        <div class="myNotify__time">${val.dateTime}</div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button
+                                            class="btn myNotify__btn__dropdown"
+                                            type="button"
+                                            id="dropdownMenuButton"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" onclick="deleteAnnounce('` +
                         val.idNotify +
                         `')">Xóa thông báo</a>
-                            <a
-                                class="dropdown-item"
-                                data-toggle="modal"
-                                data-target="#modalEditPost"
-                                onclick="showEditAnnouMD('` +
+                                        <a
+                                            class="dropdown-item"
+                                            data-toggle="modal"
+                                            data-target="#modalEditPost"
+                                            onclick="showEditAnnouMD('` +
                         val.idNotify +
                         `', '` +
                         val.tittle +
@@ -142,19 +142,19 @@ function loadListAnnounces2(number) {
                         `', ` +
                         number +
                         `)"
-                                >Chỉnh sửa</a
-                            >
+                                            >Chỉnh sửa</a
+                                        >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="myNotify__detail">
+                                    <div class="col"></div>
+                                    <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                                        >Xem chi tiết</a
+                                    >
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="myNotify__detail">
-                        <div class="col"></div>
-                        <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
-                            >Xem chi tiết</a
-                        >
-                    </div>
-                </div>
-            </div>`;
+                        </div>`;
                     allAnnou.innerHTML += a;
                 }
             });

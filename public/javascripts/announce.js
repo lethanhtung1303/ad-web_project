@@ -12,26 +12,27 @@ function loadListAnnounces() {
                     if (i >= 10) return;
 
                     var notify = document.createElement('div');
-                    notify.innerHTML = `<div class="myNotify">
-                                <div class="mainNotify__container">
-                                    <div class="myNotify__container__header">
-                                        <div
-                                            class="mainNotify__container__header__container"
-                                        >
-                                            <div class="myNotify__title">${val.tittle}</div>
-                                            <div class="myNotify__time">${val.dateTime}</div>
-                                        </div>
-                                    </div>
-                                    <div class="myNotify__detail">
-                                        <div class="col"></div>
-                                        <a
-                                            href="/notify/detail?idAnnounce=${val.idNotify}"
-                                            class="myNotify__detail__link"
-                                            >Xem chi tiết</a
-                                        >
-                                    </div>
+                    notify.innerHTML =
+                    `<div class="myNotify">
+                        <div class="mainNotify__container">
+                            <div class="myNotify__container__header">
+                                <div
+                                    class="mainNotify__container__header__container"
+                                >
+                                    <div class="myNotify__title">${val.tittle}</div>
+                                    <div class="myNotify__time">${val.dateTime}</div>
                                 </div>
-                            </div>`;
+                            </div>
+                            <div class="myNotify__detail">
+                                <div class="col"></div>
+                                <a
+                                    href="/notify/detail?idAnnounce=${val.idNotify}"
+                                    class="myNotify__detail__link"
+                                    >Xem chi tiết</a
+                                >
+                            </div>
+                        </div>
+                    </div>`;
 
                     div.appendChild(notify);
                 });
@@ -53,26 +54,27 @@ function loadListNotifysById(idNotify) {
 
                     if (val.idNotify === idNotify) {
                         var notify = document.createElement('div');
-                        notify.innerHTML = `<div class="myNotify">
-                                    <div class="mainNotify__container">
-                                        <div class="myNotify__container__header">
-                                            <div
-                                                class="mainNotify__container__header__container"
-                                            >
-                                                <div class="myNotify__title">${val.tittle}</div>
-                                                <div class="myNotify__time">${val.dateTime}</div>
-                                            </div>
-                                        </div>
-                                        <div class="myNotify__detail">
-                                            <div class="col"></div>
-                                            <a
-                                                href="/notify/detail?idAnnounce=${val.idNotify}"
-                                                class="myNotify__detail__link"
-                                                >Xem chi tiết</a
-                                            >
-                                        </div>
+                        notify.innerHTML =
+                        `<div class="myNotify">
+                            <div class="mainNotify__container">
+                                <div class="myNotify__container__header">
+                                    <div
+                                        class="mainNotify__container__header__container"
+                                    >
+                                        <div class="myNotify__title">${val.tittle}</div>
+                                        <div class="myNotify__time">${val.dateTime}</div>
                                     </div>
-                                </div>`;
+                                </div>
+                                <div class="myNotify__detail">
+                                    <div class="col"></div>
+                                    <a
+                                        href="/notify/detail?idAnnounce=${val.idNotify}"
+                                        class="myNotify__detail__link"
+                                        >Xem chi tiết</a
+                                    >
+                                </div>
+                            </div>
+                        </div>`;
 
                         div.prepend(notify);
                     }

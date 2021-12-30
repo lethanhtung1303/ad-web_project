@@ -9,7 +9,6 @@ function loadListAnnounces(number) {
         .then((json) => {
             var data = json.data.reverse();
             arr = data;
-            s;
             var allAnnou = document.getElementById('allAnnou');
             data.forEach((val, i) => {
                 if (i >= min && i < max) {
