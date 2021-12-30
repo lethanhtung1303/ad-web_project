@@ -36,6 +36,12 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+
+        <!--Socket-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"
+            integrity="sha512-nYuHvSAhY5lFZ4ixSViOwsEKFvlxHMU2NHts1ILuJgOS6ptUmAGt/0i5czIgMOahKZ6JN84YFDA+mCdky7dD8A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     </head>
     <body>
         <header class="header">
@@ -108,6 +114,13 @@
         <div class="col-md-5"><%- include(locals.content) %></div>
 
         <div class="col-md-4">
+
+            <!--Khi admin đăng thông báo mới-->
+            <div style="display: none;" class="alert alert-success alert-dismissible fade show text-center" id="alert-Announce">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong id="content_realtime"></strong>
+            </div>
+            
             <div class="aside">
                 <h3 class="text-center">Danh sách thông báo</h3>
                 <div class="myNotify__detail">
@@ -147,5 +160,10 @@
 
         <!-- javascripts -->
         <script src="/javascripts/main.js"></script>
+
+        <script src="/javascripts/announce.js"></script>
+
+        <script src="/javascripts/socket.js"></script>
+
     </body>
 </html>

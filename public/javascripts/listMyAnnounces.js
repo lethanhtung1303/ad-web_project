@@ -226,8 +226,8 @@ btnEditAnnounce.addEventListener('click', () => {
             .then((json) => {
                 if (json.code === 0) {
                     choosePage(parseInt(page_MD));
-                    // msg = "Thông báo vừa được chỉnh sửa " + "<a href='/announceDetail?idNotify=" + idNotify + "'>XEM</a>"
-                    // socket.emit("client_Send_Data", msg)
+                    msg = "Thông báo vừa được chỉnh sửa " + "<a href='/announceDetail?idNotify=" + idNotify + "'>XEM</a>"
+                    socket.emit("client_Send_Data", msg)
                 } else alert(json.message);
             })
             .catch((err) => console.log(err));
