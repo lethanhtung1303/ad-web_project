@@ -1,22 +1,27 @@
 <div>
-    <h4 class="text-center text-dark text-uppercase mt-5"><%= data[0].tittle %></h4>
+    <h4 class="text-center text-dark text-uppercase mt-5">
+        <%= data[0].tittle %>
+    </h4>
 </div>
 
 <div class="container mt-4" id="AnnouDetail">
     <div id="info-add">
         <u>
-            <i><% listCategory.forEach(val => { %>
-                <%if(data[0].auths === val.auths){ %>
-                <h6>Chuyên đề: <%= val.name %></h6>
-                <% } %>
-            <% }) %></a></i>&nbsp;|
-            <i>Ngày đăng <%= data[0].dateTime %></i>
+            <i>
+                <% listCategory.forEach(val => { %> <%if(data[0].auths ===
+                val.auths){ %>
+                <h6 class="notify__detail--title">
+                    Chuyên đề: <%= val.name %>
+                </h6>
+                <% } %> <% }) %>
+            </i>
+            <i class="notify__detail--time"
+                >Ngày đăng <%= data[0].dateTime %></i
+            >
         </u>
     </div>
     <div id="contentAnnou" class="mt-2">
-        <div>
-            <%= data[0].content %>
-        </div>
+        <div class="notify__detail--content"><%= data[0].content %></div>
         <div class="text-md-end mt-2">Thực hiện: <%= data[0].name %></div>
     </div>
 </div>
