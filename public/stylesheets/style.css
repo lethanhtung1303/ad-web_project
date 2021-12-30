@@ -610,3 +610,14 @@ button#dropdownMenuButton {
     background-color: transparent;
     margin-top: -10px;
 }
+
+#loadPage {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: url('http://i.stack.imgur.com/FhHRx.gif') 50% 100% no-repeat;
+}
