@@ -85,7 +85,10 @@ function loadPostTimeLine() {
                         'class',
                         'homepage__post-posts--header-name',
                     );
-                    a_headerName.setAttribute('href', '/auth/profile');
+                    a_headerName.setAttribute(
+                        'href',
+                        `/post/me?idUser=${val.idUser}`,
+                    );
                     div_headerTime.setAttribute(
                         'class',
                         'homepage__post-posts--header-time',
@@ -417,7 +420,10 @@ if (postArea) {
                         'class',
                         'homepage__post-posts--header-name',
                     );
-                    a_headerName.setAttribute('href', '/auth/profile');
+                    a_headerName.setAttribute(
+                        'href',
+                        `/post/me?idUser=${val.idUser}`,
+                    );
                     div_headerTime.setAttribute(
                         'class',
                         'homepage__post-posts--header-time',
@@ -610,7 +616,10 @@ if (postArea) {
                         'class',
                         'homepage__post-posts--header-name',
                     );
-                    a_headerName.setAttribute('href', '/auth/profile');
+                    a_headerName.setAttribute(
+                        'href',
+                        `/post/me?idUser=${val.idUser}`,
+                    );
                     div_headerTime.setAttribute(
                         'class',
                         'homepage__post-posts--header-time',
@@ -809,7 +818,10 @@ if (postArea) {
                                 'class',
                                 'homepage__post-posts--header-name',
                             );
-                            a_headerName.setAttribute('href', '/auth/profile');
+                            a_headerName.setAttribute(
+                                'href',
+                                `/post/me?idUser=${val.idUser}`,
+                            );
                             div_headerTime.setAttribute(
                                 'class',
                                 'homepage__post-posts--header-time',
