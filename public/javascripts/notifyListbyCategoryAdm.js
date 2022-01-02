@@ -167,7 +167,7 @@ function choosePage(number) {
 }
 
 function deleteAnnounce(idNotify) {
-    fetch('/notify/deleteByAd', {
+    fetch('/notify/delete', {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
