@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const multer = require('multer');
-const upload = multer({ dest: './public/images' });
+const upload = multer({ dest: './public/images/upload' });
 const fs = require('fs');
 const users = require('../models/users');
 const bcrypt = require('bcrypt');
@@ -163,7 +163,10 @@ router.post('/add', upload.single('picture'), (req, res) => {
     });
 
     var picture = req.file;
-    fs.renameSync(picture.path, `./public/images/${picture.originalname}`);
+    fs.renameSync(
+        picture.path,
+        `./public/images/upload/${picture.originalname}`,
+    );
     if (idUser && name && email && picture) {
         users
             .find({ idUser: idUser })
@@ -177,7 +180,7 @@ router.post('/add', upload.single('picture'), (req, res) => {
                     name: name,
                     email: email,
                     position: 2,
-                    picture: '/images/' + picture.originalname,
+                    picture: '/images/upload/' + picture.originalname,
                     auths: auths,
                 });
 

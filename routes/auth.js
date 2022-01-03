@@ -4,7 +4,7 @@ const multer = require('multer');
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 
-const upload = multer({ dest: './public/images' });
+const upload = multer({ dest: './public/images/upload' });
 
 const users = require('../models/users');
 
@@ -61,13 +61,13 @@ router.post('/changeAvt', upload.single('picture'), (req, res) => {
     console.log(picture);
     //fs.unlinkSync(profile.picture)
     fs.renameSync(
-        './public/images/' + picture.filename,
-        './public/images/' + picture.originalname,
+        './public/images/upload/' + picture.filename,
+        './public/images/upload/' + picture.originalname,
     );
     users
         .updateOne(
             { idUser: profile.idUser },
-            { $set: { picture: '/images/' + picture.originalname } },
+            { $set: { picture: '/images/upload/' + picture.originalname } },
         )
         .exec();
     setTimeout(() => {

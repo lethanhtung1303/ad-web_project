@@ -303,11 +303,11 @@ if (btnNotify) {
             })
                 .then((res) => res.json())
                 .then((json) => {
-                    console.log(json.data);
+                    // console.log(json.data);
                     if (json.code === 0) {
                         document.getElementById('contentNotify').value = '';
                         document.getElementById('tittle').value = '';
-                        console.log(json.data);
+                        // console.log(json.data);
                         loadListNotifysById(json.data.idNotify);
                         msg =
                             json.data.name +
@@ -315,7 +315,7 @@ if (btnNotify) {
                             "<a href='/notify/detail?idAnnounce=" +
                             json.data.idNotify +
                             "'>XEM</a>";
-                        socket.emit('client_Send_Data', msg);
+                        // socket.emit('client_Send_Data', msg);
                     }
                 })
                 .catch((e) => console.log(e));
@@ -346,7 +346,7 @@ if (btnNotify) {
                     if (json.code === 0) {
                         document.getElementById('contentPost').value = '';
                         document.getElementById('link').value = '';
-                        console.log(json.data);
+                        // console.log(json.data);
                         loadPostById(json.data.idPost);
                     }
                 })
@@ -1287,5 +1287,1041 @@ if (postArea) {
                 else alert(json.message);
             })
             .catch((err) => console.log(err));
+    }
+}
+
+var div_announces = document.getElementById('announces');
+if (div_announces) {
+    loadListAnnounces();
+    function loadListAnnounces() {
+        div_announces.innerHTML = '';
+        setTimeout(() => {
+            fetch('/api/notify')
+                .then((res) => res.json())
+                .then((json) => {
+                    var data = json.data.reverse();
+                    a = data;
+                    data.forEach((val, i) => {
+                        if (i >= 10) return;
+
+                        var notify = document.createElement('div');
+                        notify.innerHTML = `<div class="myNotify">
+                        <div class="mainNotify__container">
+                            <div class="myNotify__container__header">
+                                <div
+                                    class="mainNotify__container__header__container"
+                                >
+                                    <div class="myNotify__title">${val.tittle}</div>
+                                    <div class="myNotify__time">${val.dateTime}</div>
+                                </div>
+                            </div>
+                            <div class="myNotify__detail">
+                                <div class="col"></div>
+                                <a
+                                    href="/notify/detail?idAnnounce=${val.idNotify}"
+                                    class="myNotify__detail__link"
+                                    >Xem chi tiết</a
+                                >
+                            </div>
+                        </div>
+                    </div>`;
+
+                        div_announces.appendChild(notify);
+                    });
+                })
+                .catch((e) => console.log(e));
+        }, 500);
+    }
+
+    function loadListNotifysById(idNotify) {
+        setTimeout(() => {
+            fetch('/api/notify')
+                .then((res) => res.json())
+                .then((json) => {
+                    var data = json.data.reverse();
+                    a = data;
+                    data.forEach((val, i) => {
+                        if (i >= 10) return;
+
+                        if (val.idNotify === idNotify) {
+                            var notify = document.createElement('div');
+                            notify.innerHTML = `<div class="myNotify">
+                            <div class="mainNotify__container">
+                                <div class="myNotify__container__header">
+                                    <div
+                                        class="mainNotify__container__header__container"
+                                    >
+                                        <div class="myNotify__title">${val.tittle}</div>
+                                        <div class="myNotify__time">${val.dateTime}</div>
+                                    </div>
+                                </div>
+                                <div class="myNotify__detail">
+                                    <div class="col"></div>
+                                    <a
+                                        href="/notify/detail?idAnnounce=${val.idNotify}"
+                                        class="myNotify__detail__link"
+                                        >Xem chi tiết</a
+                                    >
+                                </div>
+                            </div>
+                        </div>`;
+
+                            div_announces.prepend(notify);
+                        }
+                    });
+                })
+                .catch((e) => console.log(e));
+        }, 500);
+    }
+}
+
+//const { json } = require("express")
+var allAnnou = document.getElementById('myNotifyList');
+if (allAnnou) {
+    loadListAnnounces(1);
+    var arr = [];
+    function loadListAnnounces(number) {
+        document.getElementById('myNotifyList').innerHTML = '';
+        var min = (number - 1) * 10;
+        var max = number * 10;
+        fetch('/api/list-my-notify')
+            .then((res) => res.json())
+            .then((json) => {
+                var data = json.data.reverse();
+                arr = data;
+                var allAnnou = document.getElementById('myNotifyList');
+                data.forEach((val, i) => {
+                    if (i >= min && i < max) {
+                        var annou =
+                            `<div class="myNotify" id="${val.idNotify}">
+                            <div class="myNotify__container">
+                                <div class="myNotify__container__header">
+                                    <div class="myNotify__container__header__container">
+                                        <div class="myNotify__title">${val.tittle}</div>
+                                        <div class="myNotify__time">${val.dateTime}</div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button
+                                            class="btn myNotify__btn__dropdown"
+                                            type="button"
+                                            id="dropdownMenuButton"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" onclick="deleteAnnounce('` +
+                            val.idNotify +
+                            `')">Xóa thông báo</a>
+                                                        <a
+                                                            class="dropdown-item"
+                                                            data-toggle="modal"
+                                                            data-target="#modalEditPost"
+                                                            onclick="showEditAnnouMD('` +
+                            val.idNotify +
+                            `', '` +
+                            val.tittle +
+                            `', '` +
+                            val.content +
+                            `', ` +
+                            number +
+                            `)"
+                                                            >Chỉnh sửa</a
+                                                        >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="myNotify__detail">
+                                    <div class="col"></div>
+                                    <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                                        >Xem chi tiết</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                        allAnnou.innerHTML += annou;
+                    }
+                });
+                setTimeout(() => {
+                    var count = 0;
+                    var pagination = document.getElementById('pagination');
+                    for (var i in arr) {
+                        if (i % 10 === 0) {
+                            count++;
+                            var li = document.createElement('li');
+                            var button = document.createElement('button');
+
+                            li.setAttribute('class', 'pagination-ele');
+                            button.setAttribute('class', 'btnPagination');
+                            button.setAttribute(
+                                'onclick',
+                                'choosePage(' + count + ')',
+                            );
+                            button.innerHTML = count;
+
+                            li.appendChild(button);
+                            pagination.appendChild(li);
+                        }
+                    }
+                }, 10);
+            })
+            .catch((e) => console.log(e));
+    }
+
+    function loadListAnnounces2(number) {
+        document.getElementById('myNotifyList').innerHTML = '';
+        var min = (number - 1) * 10;
+        var max = number * 10;
+        fetch('/api/list-my-notify')
+            .then((res) => res.json())
+            .then((json) => {
+                var data = json.data.reverse();
+                var allAnnou = document.getElementById('myNotifyList');
+                data.forEach((val, i) => {
+                    if (i >= min && i < max) {
+                        var annou =
+                            `<div class="myNotify" id="${val.idNotify}">
+                <div class="myNotify__container">
+                    <div class="myNotify__container__header">
+                        <div class="myNotify__container__header__container">
+                            <div class="myNotify__title">${val.tittle}</div>
+                            <div class="myNotify__time">${val.dateTime}</div>
+                        </div>
+                        <div class="dropdown">
+                            <button
+                                class="btn myNotify__btn__dropdown"
+                                type="button"
+                                id="dropdownMenuButton"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" onclick="deleteAnnounce('` +
+                            val.idNotify +
+                            `')">Xóa thông báo</a>
+                                <a
+                                    class="dropdown-item"
+                                    data-toggle="modal"
+                                    data-target="#modalEditPost"
+                                    onclick="showEditAnnouMD('` +
+                            val.idNotify +
+                            `', '` +
+                            val.tittle +
+                            `', '` +
+                            val.content +
+                            `', ` +
+                            number +
+                            `)"
+                                    >Chỉnh sửa</a
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="myNotify__detail">
+                        <div class="col"></div>
+                        <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                            >Xem chi tiết</a
+                        >
+                    </div>
+                </div>
+            </div>
+            `;
+                        allAnnou.innerHTML += annou;
+                    }
+                });
+            })
+            .catch((e) => console.log(e));
+    }
+
+    function choosePage(number) {
+        loadListAnnounces2(number);
+    }
+
+    function deleteAnnounce(idNotify) {
+        fetch('/notify/deleteByAd', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                idNotify: idNotify,
+            }),
+        })
+            .then((res) => res.json())
+            .then((json) => {
+                console.log(json);
+                if (json.code === 0) {
+                    document.getElementById(idNotify).remove();
+                    var ulAnnounces = document.getElementById('ul' + idNotify);
+                    if (ulAnnounces) ulAnnounces.remove();
+                }
+            })
+            .catch((err) => console.log(err));
+    }
+
+    var idNotify = '';
+    var tittle = '';
+    var content = '';
+
+    function showEditAnnouMD(idNotify, tittle, content, number) {
+        document.getElementById('idNotify').value = idNotify;
+        document.getElementById('page_MD').value = number;
+        document.getElementById('tittle_MD').value = tittle;
+        document.getElementById('contentPost_MD').value = content;
+
+        idNotify = idNotify;
+        tittle = tittle;
+        content = content;
+    }
+
+    var btnEditAnnounce = document.getElementById('btnEditPost');
+
+    btnEditAnnounce.addEventListener('click', () => {
+        var idNotify = document.getElementById('idNotify').value;
+        var page_MD = document.getElementById('page_MD').value;
+        var tittle = document.getElementById('tittle_MD').value;
+        var content = document.getElementById('contentPost_MD').value;
+
+        if (idNotify && tittle && content) {
+            fetch('/notify/edit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    idNotify: idNotify,
+                    tittle: tittle,
+                    content: content,
+                }),
+            })
+                .then((res) => res.json())
+                .then((json) => {
+                    if (json.code === 0) {
+                        choosePage(parseInt(page_MD));
+                        // msg = "Thông báo vừa được chỉnh sửa " + "<a href='/announceDetail?idNotify=" + idNotify + "'>XEM</a>"
+                        // socket.emit("client_Send_Data", msg)
+                    } else alert(json.message);
+                })
+                .catch((err) => console.log(err));
+        }
+    });
+}
+
+var isAdmin = document.getElementById('isAdmin');
+if (isAdmin) {
+    var allAnnou = document.getElementById('allAnnou');
+    if (allAnnou) {
+        loadListAnnounces(1);
+        var arr = [];
+        function loadListAnnounces(number) {
+            document.getElementById('allAnnou').innerHTML = '';
+            var min = (number - 1) * 10;
+            var max = number * 10;
+            fetch('/api/notify')
+                .then((res) => res.json())
+                .then((json) => {
+                    var data = json.data.reverse();
+                    arr = data;
+                    var allAnnou = document.getElementById('allAnnou');
+                    data.forEach((val, i) => {
+                        if (i >= min && i < max) {
+                            var notify = document.createElement('div');
+                            notify.innerHTML =
+                                `<div id="${val.idNotify}" class="myNotify__container">
+                            <div class="myNotify__container__header">
+                                <div class="myNotify__container__header__container">
+                                    <div class="myNotify__title">${val.tittle}</div>
+                                    <div class="myNotify__time">${val.dateTime}</div>
+                                </div>
+                                <div class="dropdown">
+                                    <button
+                                        class="btn myNotify__btn__dropdown"
+                                        type="button"
+                                        id="dropdownMenuButton"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false"
+                                    >
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" onclick="deleteAnnounce('` +
+                                val.idNotify +
+                                `')">Xóa thông báo</a>
+                                        <a
+                                            class="dropdown-item"
+                                            data-toggle="modal"
+                                            data-target="#modalEditPost"
+                                            onclick="showEditAnnouMD('` +
+                                val.idNotify +
+                                `', '` +
+                                val.tittle +
+                                `', '` +
+                                val.content +
+                                `', ` +
+                                number +
+                                `)"
+                                            >Chỉnh sửa</a
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="myNotify__detail">
+                                <div class="col"></div>
+                                <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                                    >Xem chi tiết</a
+                                >
+                            </div>
+                        </div>`;
+
+                            allAnnou.appendChild(notify);
+                        }
+                    });
+                    setTimeout(() => {
+                        var count = 0;
+                        var pagination = document.getElementById('pagination');
+                        for (var i in arr) {
+                            if (i % 10 === 0) {
+                                count++;
+                                var li = document.createElement('li');
+                                var button = document.createElement('button');
+                                li.setAttribute('class', 'pagination-ele');
+                                button.setAttribute('class', 'btnPagination');
+                                button.setAttribute(
+                                    'onclick',
+                                    'choosePage(' + count + ')',
+                                );
+                                button.innerHTML = count;
+
+                                li.appendChild(button);
+                                pagination.appendChild(li);
+                            }
+                        }
+                    }, 10);
+                })
+                .catch((e) => console.log(e));
+        }
+
+        function loadListAnnounces2(number) {
+            document.getElementById('allAnnou').innerHTML = '';
+            var min = (number - 1) * 10;
+            var max = number * 10;
+            fetch('/api/notify')
+                .then((res) => res.json())
+                .then((json) => {
+                    var data = json.data.reverse();
+                    var allAnnou = document.getElementById('allAnnou');
+                    data.forEach((val, i) => {
+                        if (i >= min && i < max) {
+                            var notify = document.createElement('div');
+                            notify.innerHTML =
+                                `<div id="${val.idNotify}" class="myNotify__container">
+                                <div class="myNotify__container__header">
+                                    <div class="myNotify__container__header__container">
+                                        <div class="myNotify__title">${val.tittle}</div>
+                                        <div class="myNotify__time">${val.dateTime}</div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button
+                                            class="btn myNotify__btn__dropdown"
+                                            type="button"
+                                            id="dropdownMenuButton"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" onclick="deleteAnnounce('` +
+                                val.idNotify +
+                                `')">Xóa thông báo</a>
+                                            <a
+                                                class="dropdown-item"
+                                                data-toggle="modal"
+                                                data-target="#modalEditPost"
+                                                onclick="showEditAnnouMD('` +
+                                val.idNotify +
+                                `', '` +
+                                val.tittle +
+                                `', '` +
+                                val.content +
+                                `', ` +
+                                number +
+                                `)"
+                                                >Chỉnh sửa</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="myNotify__detail">
+                                    <div class="col"></div>
+                                    <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                                        >Xem chi tiết</a
+                                    >
+                                </div>
+                            </div>`;
+
+                            allAnnou.appendChild(notify);
+
+                            /*
+                var annou = document.createElement("div")
+                var annouTittle = document.createElement("div")
+                var annouTime = document.createElement("div")
+                var a = document.createElement("a")
+
+                a.setAttribute('href', "announceDetail?idNotify="+val.idNotify)
+                a.setAttribute("class", "click")
+                annou.setAttribute("class", "annou")
+                annou.setAttribute("id", val.idNotify)
+                annouTime.setAttribute("class", "annou-time")
+                annouTittle.setAttribute("class", "annou-tittle")
+
+                a.innerHTML = "Xem chi tiet"
+                annouTittle.innerHTML = val.tittle
+                annouTime.innerHTML = val.dateTime+ `<span class="dropdown">
+                                                        <button class="btnChoose" type="button" data-toggle="dropdown">
+                                                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu listChoose">
+                                                            <button class="btn btn-light" onclick="deleteAnnounce('`+val.idNotify+`')">Xóa thông báo</button>
+                                                        </div>
+                                                    </span>`
+
+                annou.appendChild(annouTittle)
+                annou.appendChild(annouTime)
+                annou.appendChild(a)
+
+                allAnnou.appendChild(annou)
+                */
+                        }
+                    });
+                })
+                .catch((e) => console.log(e));
+        }
+
+        function choosePage(number) {
+            loadListAnnounces2(number);
+        }
+
+        function deleteAnnounce(idNotify) {
+            fetch('/notify/deleteByAd', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    idNotify: idNotify,
+                }),
+            })
+                .then((res) => res.json())
+                .then((json) => {
+                    console.log(json);
+                    if (json.code === 0) {
+                        document.getElementById(idNotify).remove();
+                        var ulAnnounces = document.getElementById(
+                            'ul' + idNotify,
+                        );
+                        if (ulAnnounces) ulAnnounces.remove();
+                    }
+                })
+                .catch((err) => console.log(err));
+        }
+        function choosePage(number) {
+            loadListAnnounces2(number);
+        }
+    }
+
+    var notifyListbyCategory = document.getElementById('notifyListbyCategory');
+    if (notifyListbyCategory) {
+        loadListAnnounces(1);
+        var arr = [];
+        function loadListAnnounces(number) {
+            //document.getElementById('allAnnou').innerHTML=''
+            var url = new URL(window.location);
+            var auths = url.searchParams.get('auths');
+            var min = (number - 1) * 10;
+            var max = number * 10;
+            fetch('/api/notify-by-auths?auths=' + auths)
+                .then((res) => res.json())
+                .then((json) => {
+                    var data = json.data.reverse();
+                    arr = data;
+                    data.forEach((val, i) => {
+                        if (i >= min && i < max) {
+                            var a =
+                                `<div class="myNotify" id="${val.idNotify}">
+                            <div class="myNotify__container">
+                                <div class="myNotify__container__header">
+                                    <div class="myNotify__container__header__container">
+                                        <div class="myNotify__title">${val.tittle}</div>
+                                        <div class="myNotify__time">${val.dateTime}</div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button
+                                            class="btn myNotify__btn__dropdown"
+                                            type="button"
+                                            id="dropdownMenuButton"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" onclick="deleteAnnounce('` +
+                                val.idNotify +
+                                `')">Xóa thông báo</a>
+                                            <a
+                                                class="dropdown-item"
+                                                data-toggle="modal"
+                                                data-target="#modalEditPost"
+                                                onclick="showEditAnnouMD('` +
+                                val.idNotify +
+                                `', '` +
+                                val.tittle +
+                                `', '` +
+                                val.content +
+                                `', ` +
+                                number +
+                                `)"
+                                                >Chỉnh sửa</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="myNotify__detail">
+                                    <div class="col"></div>
+                                    <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                                        >Xem chi tiết</a
+                                    >
+                                </div>
+                            </div>
+                        </div>`;
+                            notifyListbyCategory.innerHTML += a;
+                        }
+                    });
+
+                    setTimeout(() => {
+                        var count = 0;
+                        var pagination = document.getElementById('pagination');
+                        for (var i in arr) {
+                            if (i % 10 === 0) {
+                                count++;
+                                var li = document.createElement('li');
+                                var button = document.createElement('button');
+
+                                li.setAttribute('class', 'pagination-ele');
+                                button.setAttribute('class', 'btnPagination');
+                                button.setAttribute(
+                                    'onclick',
+                                    'choosePage(' + count + ')',
+                                );
+                                button.innerHTML = count;
+
+                                li.appendChild(button);
+                                pagination.appendChild(li);
+                            }
+                        }
+                    }, 10);
+                })
+                .catch((e) => console.log(e));
+        }
+
+        function loadListAnnounces2(number) {
+            notifyListbyCategory.innerHTML = '';
+            var min = (number - 1) * 10;
+            var max = number * 10;
+            var url = new URL(window.location);
+            var auths = url.searchParams.get('auths');
+            fetch('/api/notify-by-auths?auths=' + auths)
+                .then((res) => res.json())
+                .then((json) => {
+                    var data = json.data.reverse();
+                    data.forEach((val, i) => {
+                        if (i >= min && i < max) {
+                            var a =
+                                `<div class="myNotify" id="${val.idNotify}">
+                            <div class="myNotify__container">
+                                <div class="myNotify__container__header">
+                                    <div class="myNotify__container__header__container">
+                                        <div class="myNotify__title">${val.tittle}</div>
+                                        <div class="myNotify__time">${val.dateTime}</div>
+                                    </div>
+                                    <div class="dropdown">
+                                        <button
+                                            class="btn myNotify__btn__dropdown"
+                                            type="button"
+                                            id="dropdownMenuButton"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                        >
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" onclick="deleteAnnounce('` +
+                                val.idNotify +
+                                `')">Xóa thông báo</a>
+                                        <a
+                                            class="dropdown-item"
+                                            data-toggle="modal"
+                                            data-target="#modalEditPost"
+                                            onclick="showEditAnnouMD('` +
+                                val.idNotify +
+                                `', '` +
+                                val.tittle +
+                                `', '` +
+                                val.content +
+                                `', ` +
+                                number +
+                                `)"
+                                            >Chỉnh sửa</a
+                                        >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="myNotify__detail">
+                                    <div class="col"></div>
+                                    <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                                        >Xem chi tiết</a
+                                    >
+                                </div>
+                            </div>
+                        </div>`;
+                            notifyListbyCategory.innerHTML += a;
+                        }
+                    });
+                })
+                .catch((e) => console.log(e));
+        }
+
+        function choosePage(number) {
+            loadListAnnounces2(number);
+        }
+
+        function deleteAnnounce(idNotify) {
+            fetch('/notify/deleteByAd', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    idNotify: idNotify,
+                }),
+            })
+                .then((res) => res.json())
+                .then((json) => {
+                    console.log(json);
+                    if (json.code === 0) {
+                        document.getElementById(idNotify).remove();
+                        var ulAnnounces = document.getElementById(
+                            'ul' + idNotify,
+                        );
+                        if (ulAnnounces) ulAnnounces.remove();
+                    }
+                })
+                .catch((err) => console.log(err));
+        }
+
+        var idNotify = '';
+        var tittle = '';
+        var content = '';
+
+        function showEditAnnouMD(idNotify, tittle, content, number) {
+            document.getElementById('idNotify').value = idNotify;
+            document.getElementById('page_MD').value = number;
+            document.getElementById('tittle_MD').value = tittle;
+            document.getElementById('contentPost_MD').value = content;
+
+            idNotify = idNotify;
+            tittle = tittle;
+            content = content;
+        }
+
+        var btnEditAnnounce = document.getElementById('btnEditPost');
+
+        btnEditAnnounce.addEventListener('click', () => {
+            var idNotify = document.getElementById('idNotify').value;
+            var page_MD = document.getElementById('page_MD').value;
+            var tittle = document.getElementById('tittle_MD').value;
+            var content = document.getElementById('contentPost_MD').value;
+
+            if (idNotify && tittle && content) {
+                fetch('/notify/edit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        idNotify: idNotify,
+                        tittle: tittle,
+                        content: content,
+                    }),
+                })
+                    .then((res) => res.json())
+                    .then((json) => {
+                        if (json.code === 0) {
+                            choosePage(parseInt(page_MD));
+                            // msg = "Thông báo vừa được chỉnh sửa " + "<a href='/announceDetail?idNotify=" + idNotify + "'>XEM</a>"
+                            // socket.emit("client_Send_Data", msg)
+                        } else alert(json.message);
+                    })
+                    .catch((err) => console.log(err));
+            }
+        });
+    }
+} else {
+    var allAnnou = document.getElementById('allAnnou');
+    if (allAnnou) {
+        loadListAnnounces(1);
+        var arr = [];
+        function loadListAnnounces(number) {
+            allAnnou.innerHTML = '';
+            var min = (number - 1) * 10;
+            var max = number * 10;
+            fetch('/api/notify')
+                .then((res) => res.json())
+                .then((json) => {
+                    var data = json.data.reverse();
+                    arr = data;
+                    data.forEach((val, i) => {
+                        if (i >= min && i < max) {
+                            var notify = document.createElement('div');
+                            notify.innerHTML = `<div id="${val.idNotify}"  class="myNotify__container">
+                                <div class="myNotify__container__header">
+                                    <div class="myNotify__container__header__container">
+                                        <div class="myNotify__title">${val.tittle}</div>
+                                        <div class="myNotify__time">${val.dateTime}</div>
+                                    </div>
+                                </div>
+                                <div class="myNotify__detail">
+                                    <div class="col"></div>
+                                    <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                                        >Xem chi tiết</a
+                                    >
+                                </div>
+                            </div>`;
+
+                            allAnnou.appendChild(notify);
+                        }
+                    });
+                    setTimeout(() => {
+                        var count = 0;
+                        var pagination = document.getElementById('pagination');
+                        for (var i in arr) {
+                            if (i % 10 === 0) {
+                                count++;
+                                var li = document.createElement('li');
+                                var button = document.createElement('button');
+
+                                li.setAttribute('class', 'pagination-ele');
+                                button.setAttribute('class', 'btnPagination');
+                                button.setAttribute(
+                                    'onclick',
+                                    'choosePage(' + count + ')',
+                                );
+                                button.innerHTML = count;
+
+                                li.appendChild(button);
+                                pagination.appendChild(li);
+                            }
+                        }
+                    }, 10);
+                })
+                .catch((e) => console.log(e));
+        }
+
+        function loadListAnnounces2(number) {
+            allAnnou.innerHTML = '';
+            var min = (number - 1) * 10;
+            var max = number * 10;
+            fetch('/api/notify')
+                .then((res) => res.json())
+                .then((json) => {
+                    var data = json.data.reverse();
+                    data.forEach((val, i) => {
+                        if (i >= min && i < max) {
+                            var annou = document.createElement('div');
+                            var annouTittle = document.createElement('div');
+                            var annouTime = document.createElement('div');
+                            var a = document.createElement('a');
+
+                            a.setAttribute(
+                                'href',
+                                'announceDetail?idAnnounce=' + val.idAnnounce,
+                            );
+                            a.setAttribute('class', 'click');
+                            annou.setAttribute('class', 'annou');
+                            annou.setAttribute('id', val.idAnnounce);
+                            annouTime.setAttribute('class', 'annou-time');
+                            annouTittle.setAttribute('class', 'annou-tittle');
+
+                            a.innerHTML = 'Xem chi tiet';
+                            annouTittle.innerHTML = val.tittle;
+                            annouTime.innerHTML =
+                                val.dateTime +
+                                `<span class="dropdown">
+                                                        <button class="btnChoose" type="button" data-toggle="dropdown">
+                                                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu listChoose">
+                                                            <button class="btn btn-light" onclick="deleteAnnounce('` +
+                                val.idAnnounce +
+                                `')">Xóa thông báo</button>
+                                                        </div>
+                                                    </span>`;
+
+                            annou.appendChild(annouTittle);
+                            annou.appendChild(annouTime);
+                            annou.appendChild(a);
+
+                            allAnnou.appendChild(annou);
+                        }
+                    });
+                })
+                .catch((e) => console.log(e));
+        }
+
+        function choosePage(number) {
+            loadListAnnounces2(number);
+        }
+
+        function deleteAnnounce(idNotify) {
+            fetch('/notify/delete', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    idNotify: idNotify,
+                }),
+            })
+                .then((res) => res.json())
+                .then((json) => {
+                    console.log(json);
+                    if (json.code === 0) {
+                        document.getElementById(idNotify).remove();
+                        var ulAnnounces = document.getElementById(
+                            'ul' + idNotify,
+                        );
+                        if (ulAnnounces) ulAnnounces.remove();
+                    }
+                })
+                .catch((err) => console.log(err));
+        }
+    }
+
+    var notifyListbyCategory = document.getElementById('notifyListbyCategory');
+    if (notifyListbyCategory) {
+        loadListAnnounces(1);
+        var arr = [];
+        function loadListAnnounces(number) {
+            //document.getElementById('allAnnou').innerHTML=''
+            var url = new URL(window.location);
+            var auths = url.searchParams.get('auths');
+            var min = (number - 1) * 10;
+            var max = number * 10;
+            fetch('/api/notify-by-auths?auths=' + auths)
+                .then((res) => res.json())
+                .then((json) => {
+                    var data = json.data.reverse();
+                    arr = data;
+                    data.forEach((val, i) => {
+                        if (i >= min && i < max) {
+                            var a = `
+                    <div class="myNotify" id="${val.idNotify}">
+                        <div class="myNotify__container">
+                            <div class="myNotify__container__header">
+                                <div class="myNotify__container__header__container">
+                                    <div class="myNotify__title">${val.tittle}</div>
+                                    <div class="myNotify__time">${val.dateTime}</div>
+                                </div>
+                            </div>
+                            <div class="myNotify__detail">
+                                <div class="col"></div>
+                                <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link">
+                                    Xem chi tiết
+                                </a>
+                            </div>
+                        </div>
+                    </div>`;
+                            notifyListbyCategory.innerHTML += a;
+                        }
+                    });
+
+                    setTimeout(() => {
+                        var count = 0;
+                        var pagination = document.getElementById('pagination');
+                        for (var i in arr) {
+                            if (i % 10 === 0) {
+                                count++;
+                                var li = document.createElement('li');
+                                var button = document.createElement('button');
+
+                                li.setAttribute('class', 'pagination-ele');
+                                button.setAttribute('class', 'btnPagination');
+                                button.setAttribute(
+                                    'onclick',
+                                    'choosePage(' + count + ')',
+                                );
+                                button.innerHTML = count;
+
+                                li.appendChild(button);
+                                pagination.appendChild(li);
+                            }
+                        }
+                    }, 10);
+                })
+                .catch((e) => console.log(e));
+        }
+
+        function loadListAnnounces2(number) {
+            notifyListbyCategory.innerHTML = '';
+            var min = (number - 1) * 10;
+            var max = number * 10;
+            var url = new URL(window.location);
+            var auths = url.searchParams.get('auths');
+            fetch('/api/notify-by-auths?auths=' + auths)
+                .then((res) => res.json())
+                .then((json) => {
+                    var data = json.data.reverse();
+                    var notifyListbyCategory = document.getElementById(
+                        'notifyListbyCategory',
+                    );
+                    data.forEach((val, i) => {
+                        if (i >= min && i < max) {
+                            var a = `<div class="myNotify" id="${val.idNotify}">
+                        <div class="myNotify__container">
+                            <div class="myNotify__container__header">
+                                <div class="myNotify__container__header__container">
+                                    <div class="myNotify__title">${val.tittle}</div>
+                                    <div class="myNotify__time">${val.dateTime}</div>
+                                </div>
+                            </div>
+                            <div class="myNotify__detail">
+                                <div class="col"></div>
+                                <a href="/notify/detail?idAnnounce=${val.idNotify}" class="myNotify__detail__link"
+                                    >Xem chi tiết</a
+                                >
+                            </div>
+                        </div>
+                    </div>`;
+                            notifyListbyCategory.innerHTML += a;
+                        }
+                    });
+                })
+                .catch((e) => console.log(e));
+        }
+
+        function choosePage(number) {
+            loadListAnnounces2(number);
+        }
     }
 }

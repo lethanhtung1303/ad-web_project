@@ -5,11 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Student Portal</title>
-        <link
-            href="https://stdportal.tdtu.edu.vn/logo.ico"
-            rel="shortcut icon"
-            type="image/png"
-        />
+        <link href="/images/logo.ico" rel="shortcut icon" type="image/png" />
 
         <!-- stylesheets -->
         <link rel="stylesheet" href="/stylesheets/style.css" />
@@ -57,7 +53,7 @@
                     >
                 </li>
                 <% if(locals.profile.position != 1){ %>
-                <li class="active">
+                <li class="active" id="isAdmin">
                     <a href="/notify/me">
                         <i class="fa fa-list-alt" aria-hidden="true"></i> Thông
                         báo của tôi
@@ -119,8 +115,6 @@
 
                 <!-- myNotify -->
                 <div id="announces"></div>
-
-                <script src="/javascripts/announce.js"></script>
             </div>
         </div>
 
