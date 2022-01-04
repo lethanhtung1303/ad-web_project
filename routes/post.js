@@ -42,6 +42,7 @@ router.post('/', (req, res) => {
                         code: 3,
                         message: 'id post exist, please try again',
                     });
+                process.env.TZ = 'Asia/Ho_Chi_Minh';
                 var now = new Date();
                 var dateTime = dateFormat(
                     now,

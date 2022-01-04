@@ -20,6 +20,7 @@ router.post('/', (req, res) => {
                     return res.json({ code: 3, message: 'id not exist' });
 
                 var idcmt = 'Cmt' + Date.now();
+                process.env.TZ = 'Asia/Ho_Chi_Minh';
                 var now = new Date();
                 var dateTime = dateFormat(now, 'mm/dd/yyyy, h:MM:ss TT');
                 var comment = data[0].comment;
