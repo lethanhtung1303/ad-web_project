@@ -201,7 +201,7 @@ router.delete('/deleteByAd', (req, res) => {
         return res.json({ code: 2, message: 'please login' });
 
     var profile = req.session.profile;
-    if (profile.position !== 0)
+    if (profile.position === 1)
         return res.json({ code: 2, message: 'unauthorized' });
 
     var { idNotify } = req.body;

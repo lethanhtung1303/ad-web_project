@@ -315,7 +315,7 @@ if (btnNotify) {
                             "<a href='/notify/detail?idAnnounce=" +
                             json.data.idNotify +
                             "'>XEM</a>";
-                        // socket.emit('client_Send_Data', msg);
+                        socket.emit('client_Send_Data', msg);
                     }
                 })
                 .catch((e) => console.log(e));
@@ -1112,7 +1112,7 @@ if (postArea) {
                                 idPost +
                                 `')"
                                         >
-                                            Xóa bài viết
+                                            Xóa bình luận
                                         </button>
                                         <button
                                             class="btn btn-light editPost dropdown-item"
@@ -1127,7 +1127,7 @@ if (postArea) {
                                 idPost +
                                 `')"
                                         >
-                                            Chỉnh sửa bài viết
+                                            Chỉnh sửa bình luận
                                         </button>
                                     </div>
                                 </div>
@@ -1202,7 +1202,7 @@ if (postArea) {
                             idPost +
                             `')"
                                         >
-                                            Xóa bài viết
+                                            Xóa bình luận
                                         </button>
                                         <button
                                             class="btn btn-light editPost dropdown-item"
@@ -1217,7 +1217,7 @@ if (postArea) {
                             idPost +
                             `')"
                                         >
-                                            Chỉnh sửa bài viết
+                                            Chỉnh sửa bình luận
                                         </button>
                                     </div>
                                 </div>
@@ -1582,35 +1582,41 @@ if (allAnnou) {
 
     var btnEditAnnounce = document.getElementById('btnEditPost');
 
-    btnEditAnnounce.addEventListener('click', () => {
-        var idNotify = document.getElementById('idNotify').value;
-        var page_MD = document.getElementById('page_MD').value;
-        var tittle = document.getElementById('tittle_MD').value;
-        var content = document.getElementById('contentPost_MD').value;
+    if (btnEditAnnounce) {
+        btnEditAnnounce.addEventListener('click', () => {
+            var idNotify = document.getElementById('idNotify').value;
+            var page_MD = document.getElementById('page_MD').value;
+            var tittle = document.getElementById('tittle_MD').value;
+            var content = document.getElementById('contentPost_MD').value;
 
-        if (idNotify && tittle && content) {
-            fetch('/notify/edit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    idNotify: idNotify,
-                    tittle: tittle,
-                    content: content,
-                }),
-            })
-                .then((res) => res.json())
-                .then((json) => {
-                    if (json.code === 0) {
-                        choosePage(parseInt(page_MD));
-                        // msg = "Thông báo vừa được chỉnh sửa " + "<a href='/announceDetail?idNotify=" + idNotify + "'>XEM</a>"
-                        // socket.emit("client_Send_Data", msg)
-                    } else alert(json.message);
+            if (idNotify && tittle && content) {
+                fetch('/notify/edit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        idNotify: idNotify,
+                        tittle: tittle,
+                        content: content,
+                    }),
                 })
-                .catch((err) => console.log(err));
-        }
-    });
+                    .then((res) => res.json())
+                    .then((json) => {
+                        if (json.code === 0) {
+                            choosePage(parseInt(page_MD));
+                            msg =
+                                'Thông báo vừa được chỉnh sửa ' +
+                                "<a href='/notify/detail?idAnnounce=" +
+                                idNotify +
+                                "'>XEM</a>";
+                            socket.emit('client_Send_Data', msg);
+                        } else alert(json.message);
+                    })
+                    .catch((err) => console.log(err));
+            }
+        });
+    }
 }
 
 var isAdmin = document.getElementById('isAdmin');
@@ -1769,37 +1775,6 @@ if (isAdmin) {
                             </div>`;
 
                             allAnnou.appendChild(notify);
-
-                            /*
-                var annou = document.createElement("div")
-                var annouTittle = document.createElement("div")
-                var annouTime = document.createElement("div")
-                var a = document.createElement("a")
-
-                a.setAttribute('href', "announceDetail?idNotify="+val.idNotify)
-                a.setAttribute("class", "click")
-                annou.setAttribute("class", "annou")
-                annou.setAttribute("id", val.idNotify)
-                annouTime.setAttribute("class", "annou-time")
-                annouTittle.setAttribute("class", "annou-tittle")
-
-                a.innerHTML = "Xem chi tiet"
-                annouTittle.innerHTML = val.tittle
-                annouTime.innerHTML = val.dateTime+ `<span class="dropdown">
-                                                        <button class="btnChoose" type="button" data-toggle="dropdown">
-                                                            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                                        </button>
-                                                        <div class="dropdown-menu listChoose">
-                                                            <button class="btn btn-light" onclick="deleteAnnounce('`+val.idNotify+`')">Xóa thông báo</button>
-                                                        </div>
-                                                    </span>`
-
-                annou.appendChild(annouTittle)
-                annou.appendChild(annouTime)
-                annou.appendChild(a)
-
-                allAnnou.appendChild(annou)
-                */
                         }
                     });
                 })
@@ -1835,6 +1810,59 @@ if (isAdmin) {
         }
         function choosePage(number) {
             loadListAnnounces2(number);
+        }
+
+        var idNotify = '';
+        var tittle = '';
+        var content = '';
+
+        function showEditAnnouMD(idNotify, tittle, content, number) {
+            document.getElementById('idNotify').value = idNotify;
+            document.getElementById('page_MD').value = number;
+            document.getElementById('tittle_MD').value = tittle;
+            document.getElementById('contentPost_MD').value = content;
+
+            idNotify = idNotify;
+            tittle = tittle;
+            content = content;
+        }
+
+        var btnEditAnnounce = document.getElementById('btnEditPost');
+
+        if (btnEditAnnounce) {
+            btnEditAnnounce.addEventListener('click', () => {
+                var idNotify = document.getElementById('idNotify').value;
+                var page_MD = document.getElementById('page_MD').value;
+                var tittle = document.getElementById('tittle_MD').value;
+                var content = document.getElementById('contentPost_MD').value;
+
+                if (idNotify && tittle && content) {
+                    fetch('/notify/edit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            idNotify: idNotify,
+                            tittle: tittle,
+                            content: content,
+                        }),
+                    })
+                        .then((res) => res.json())
+                        .then((json) => {
+                            if (json.code === 0) {
+                                choosePage(parseInt(page_MD));
+                                msg =
+                                    'Thông báo vừa được chỉnh sửa ' +
+                                    "<a href='/notify/detail?idAnnounce=" +
+                                    idNotify +
+                                    "'>XEM</a>";
+                                socket.emit('client_Send_Data', msg);
+                            } else alert(json.message);
+                        })
+                        .catch((err) => console.log(err));
+                }
+            });
         }
     }
 
@@ -2047,35 +2075,41 @@ if (isAdmin) {
 
         var btnEditAnnounce = document.getElementById('btnEditPost');
 
-        btnEditAnnounce.addEventListener('click', () => {
-            var idNotify = document.getElementById('idNotify').value;
-            var page_MD = document.getElementById('page_MD').value;
-            var tittle = document.getElementById('tittle_MD').value;
-            var content = document.getElementById('contentPost_MD').value;
+        if (btnEditAnnounce) {
+            btnEditAnnounce.addEventListener('click', () => {
+                var idNotify = document.getElementById('idNotify').value;
+                var page_MD = document.getElementById('page_MD').value;
+                var tittle = document.getElementById('tittle_MD').value;
+                var content = document.getElementById('contentPost_MD').value;
 
-            if (idNotify && tittle && content) {
-                fetch('/notify/edit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        idNotify: idNotify,
-                        tittle: tittle,
-                        content: content,
-                    }),
-                })
-                    .then((res) => res.json())
-                    .then((json) => {
-                        if (json.code === 0) {
-                            choosePage(parseInt(page_MD));
-                            // msg = "Thông báo vừa được chỉnh sửa " + "<a href='/announceDetail?idNotify=" + idNotify + "'>XEM</a>"
-                            // socket.emit("client_Send_Data", msg)
-                        } else alert(json.message);
+                if (idNotify && tittle && content) {
+                    fetch('/notify/edit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            idNotify: idNotify,
+                            tittle: tittle,
+                            content: content,
+                        }),
                     })
-                    .catch((err) => console.log(err));
-            }
-        });
+                        .then((res) => res.json())
+                        .then((json) => {
+                            if (json.code === 0) {
+                                choosePage(parseInt(page_MD));
+                                msg =
+                                    'Thông báo vừa được chỉnh sửa ' +
+                                    "<a href='/notify/detail?idAnnounce=" +
+                                    idNotify +
+                                    "'>XEM</a>";
+                                socket.emit('client_Send_Data', msg);
+                            } else alert(json.message);
+                        })
+                        .catch((err) => console.log(err));
+                }
+            });
+        }
     }
 } else {
     var allAnnou = document.getElementById('allAnnou');
@@ -2324,4 +2358,15 @@ if (isAdmin) {
             loadListAnnounces2(number);
         }
     }
+}
+
+var alerAnnounce = document.getElementById('alert-Announce');
+var contentRealtime = document.getElementById('content_realtime');
+
+if (alerAnnounce) {
+    var socket = io();
+    socket.on('server_Return_Data', (data) => {
+        alerAnnounce.style.display = 'block';
+        document.getElementById('content_realtime').innerHTML = data;
+    });
 }

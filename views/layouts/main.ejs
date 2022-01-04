@@ -101,7 +101,18 @@
             </ul>
         </nav>
 
-        <div class="col-md-5"><%- include(locals.content) %></div>
+        <div class="col-md-5">
+            <div
+                class="alert alert-success alert-dismissible fade show text-center"
+                id="alert-Announce"
+            >
+                <button type="button" class="close" data-dismiss="alert">
+                    &times;
+                </button>
+                <strong id="content_realtime"></strong>
+            </div>
+            <%- include(locals.content) %>
+        </div>
 
         <div class="col-md-4">
             <div class="aside">
@@ -138,6 +149,9 @@
 
         <!-- jquery -->
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+        <!-- socket -->
+        <script src="/socket.io/socket.io.js"></script>
 
         <!-- javascripts -->
         <script src="/javascripts/main.js"></script>

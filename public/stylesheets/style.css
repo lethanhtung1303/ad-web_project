@@ -677,3 +677,11 @@ body {
         border-right: none;
     }
 }
+
+#alert-Announce {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+    height: 48px;
+    display: none;
+}

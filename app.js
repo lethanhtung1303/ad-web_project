@@ -27,14 +27,6 @@ var authRouter = require('./routes/auth');
 var loginRouter = require('./routes/login');
 
 var app = express();
-//socket
-// const server = require('http').createServer(app);
-// const io = require('socket.io')(server);
-// io.on('connection', socket => {
-//     socket.on("client_Send_Data", data => {
-//         io.sockets.emit("server_Return_Data", data)
-//     })
-// })
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

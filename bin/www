@@ -29,6 +29,13 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+const io = require('socket.io')(server);
+io.on('connection', (socket) => {
+    socket.on('client_Send_Data', (data) => {
+        io.sockets.emit('server_Return_Data', data);
+    });
+});
+
 /**
  * Normalize a port into a number, string, or false.
  */
