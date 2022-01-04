@@ -81,4 +81,14 @@ app.use(function (err, req, res, next) {
     res.render('error');
 });
 
-module.exports = app;
+const POST = process.env.PORT || 3000;
+
+const httpServer = app.listen(POST, () =>
+    console.log('http://localhost:' + POST),
+);
+const io = require('socket.io')(httpServer);
+io.on('connection', (socket) => {
+    socket.on('client_Send_Data', (data) => {
+        io.sockets.emit('server_Return_Data', data);
+    });
+});
