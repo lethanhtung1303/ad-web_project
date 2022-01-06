@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
                 var idcmt = 'Cmt' + Date.now();
                 process.env.TZ = 'Asia/Ho_Chi_Minh';
                 var now = new Date();
-                var dateTime = dateFormat(now, 'mm/dd/yyyy, h:MM:ss TT');
+                var dateTime = dateFormat(now, 'dd/mm/yyyy, h:MM:ss TT');
                 var comment = data[0].comment;
                 var newCmt = {
                     idcmt: idcmt,
