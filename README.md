@@ -13,6 +13,14 @@
 
 ## How to configure & run
 
--   Bước 1: npm i
--   Bước 2: npm run start
--   http://localhost:3000/
+-	Cách 1:
+
+--	npm install
+--	npm run start
+--	Truy cập: http://localhost:3000
+--	Nhập tên và chọn phòng vào chat
+
+-	Cách 2
+
+--	Truy cập Link Deploy: https://vnedutdtumychat.herokuapp.com/
+--	Nhập tên và chọn phòng vào chat
