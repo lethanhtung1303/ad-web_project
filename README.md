@@ -40,4 +40,5 @@
 > Ví dụ:
 > Người dùng sử dụng Email: 51800123@student.tdtu.edu.vn để đăng nhập vào hệ thống thì:
 > -	Email: 51800123@student.tdtu.edu.vn
-> -	Password mặc định: 1234  > Đối với những mail ngoài @student.tdtu.edu.vn sẽ không thể đăng nhập vào hệ thống.
+> -	Password mặc định: 1234 
+> > Đối với những mail ngoài @student.tdtu.edu.vn sẽ không thể đăng nhập vào hệ thống.
